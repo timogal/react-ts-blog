@@ -7,17 +7,31 @@
     "allowJs": true,
     "lib": [
       "es5",
-      "dom"
+      "dom",
+      "es6"
     ],
     "outDir": "dist",
     "rootDirs": [
       "app",
       "server"
     ],
+    "baseUrl": "./",
+    "paths": {
+      "components/*": [
+        "app/components/*"
+      ],
+      "containers/*": [
+        "app/containers/*"
+      ],
+      "types/*": [
+        "app/types/*"
+      ]
+    },
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true
   },
   "exclude": [
     "node_modules",

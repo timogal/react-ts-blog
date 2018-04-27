@@ -1,9 +1,20 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { Router } from 'react-router';
+import { createBrowserHistory } from 'history';
+import * as  Loadable from 'react-loadable';
 
-import Hello from './containers/Hello';
+import App from './containers/App';
 
-ReactDOM.render(
-  <Hello name="timogal"/>,
-  document.getElementById('root') as HTMLElement
-);
+const history = createBrowserHistory();
+
+Loadable.preloadReady().then(() => {
+  ReactDOM.render(
+    (
+      <Router history={history}>
+        <App/>
+      </Router>
+    ),
+    document.getElementById('root') as HTMLElement
+  );
+});
