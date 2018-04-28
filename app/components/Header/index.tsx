@@ -8,7 +8,7 @@ import * as styles from './Header.scss';
 class Header extends React.Component<any, any> {
   render() {
     return (
-      <header>
+      <header className={styles.header}>
         <Main className={styles.content}>
           <ul className={styles.menu}>
             <li><Link to="/">首页</Link></li>

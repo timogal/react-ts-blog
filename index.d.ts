@@ -6,3 +6,6 @@ declare module '*.scss' {
 
 declare module 'normalize.css' {
 }
+
+declare module 'babel-polyfill' {
+}

@@ -1,17 +1,16 @@
 {
   "compilerOptions": {
-    "module": "esnext",
-    "target": "es6",
-    "sourceMap": true,
-    "jsx": "preserve",
+    "target": "es5",
+    "jsx": "react",
     "allowJs": true,
     "moduleResolution": "node",
     "lib": [
+      "es2015",
       "dom",
       "es6"
     ],
     "outDir": "dist",
-    "rootDir": "app",
+    "rootDir": "server",
     "baseUrl": "./",
     "paths": {
       "components/*": [
@@ -33,12 +32,6 @@
   "exclude": [
     "node_modules",
     "build",
-    "dist",
-    "server",
-    "postcss.config.js"
-  ],
-  "awesomeTypescriptLoaderOptions": {
-    "useBabel": true,
-    "useCache": false
-  }
+    "dist"
+  ]
 }

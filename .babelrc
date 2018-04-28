@@ -1,0 +1,23 @@
+{
+  "presets": [
+    "react",
+    [
+      "env",
+      {
+        "modules": false,
+        "loose": true,
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "> 1%"
+          ],
+          "node": "current"
+        }
+      }
+    ],
+    "stage-0"
+  ],
+  "plugins": [
+    "syntax-dynamic-import"
+  ]
+}

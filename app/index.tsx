@@ -4,6 +4,8 @@ import { Router } from 'react-router';
 import { createBrowserHistory } from 'history';
 import * as  Loadable from 'react-loadable';
 
+import 'babel-polyfill';
+
 import App from './containers/App';
 
 const history = createBrowserHistory();

@@ -1,6 +1,5 @@
 import * as path from 'path';
 import * as webpack from 'webpack';
-import * as loadableWebpack from 'react-loadable/webpack';
 import { CheckerPlugin } from 'awesome-typescript-loader';
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -25,7 +24,11 @@ const config: webpack.Configuration = {
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
+      {
+        test: /\.tsx?$/,
+        loader: 'babel-loader!awesome-typescript-loader',
+        exclude: /node_modules/
+      },
       { test: /\.js$/, enforce: 'pre', loader: 'source-map-loader' },
       {
         test: /\.scss$/,
@@ -40,6 +43,10 @@ const config: webpack.Configuration = {
       {
         test: /\.css$/,
         loaders: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.html/,
+        loader: 'html-loader'
       }
     ]
   },
@@ -48,7 +55,8 @@ const config: webpack.Configuration = {
     new CheckerPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
-      template: 'app/index.html'
+      template: 'app/index.html',
+      filename: 'server/template/index.html'
     })
   ]
 };
