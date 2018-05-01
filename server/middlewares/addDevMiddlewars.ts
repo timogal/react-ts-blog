@@ -5,7 +5,7 @@ import * as express from 'express';
 import * as webpackDevMiddleware from 'webpack-dev-middleware';
 import * as webpackHotMiddleware from 'webpack-hot-middleware';
 
-import webpackConfig from '../../build/webpack.config';
+import webpackConfig from '../../build/webpack.dev.config';
 
 function createWebpackMiddleware(compiler: webpack.Compiler, publicPath: string) {
   return webpackDevMiddleware(compiler, {
@@ -40,16 +40,6 @@ function setup(app: express.Application) {
 
   app.use(middleware);
   app.use(webpackHotMiddleware(compiler));
-
-  app.get('*', (request, response) => {
-    fs.readFile(path.join(process.cwd(), 'server/template/index.html'), {}, (err: Error, file: any) => {
-      if (err) {
-        response.sendStatus(404);
-      } else {
-        response.send(file.toString());
-      }
-    });
-  });
 }
 
 export default setup;

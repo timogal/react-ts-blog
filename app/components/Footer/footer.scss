@@ -3,14 +3,19 @@
   height: 60px;
   padding: 8px 0;
 
-  li {
-    display: inline-block;
-    margin: 0 24px;
-    line-height: 44px;
+  .info {
+    float: right;
 
-    a {
-      text-decoration: none;
+    li {
+      display: inline-block;
+      margin-left: 24px;
+      line-height: 44px;
+
+      a {
+        text-decoration: none;
+      }
     }
   }
+
 }
 

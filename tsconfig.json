@@ -22,6 +22,9 @@
       ],
       "types/*": [
         "app/types/*"
+      ],
+      "assets/*": [
+        "app/assets/*"
       ]
     },
     "noImplicitReturns": true,

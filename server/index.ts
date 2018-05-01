@@ -1,14 +1,14 @@
 import * as express from 'express';
 
-import setup from './middlewares/addDevMiddlewars';
+import setup from './middlewares/frontendMiddleware';
 
 const app = express();
 
-if (process.env.NODE_ENV === 'development') {
-  setup(app);
-}
+setup(app);
 
-app.listen(8080, function (err: Error) {
+const port: number = parseInt(process.env.PORT || '8080', 10);
+
+app.listen(port, function (err: Error) {
   if (err) {
     return console.error(err);
   }

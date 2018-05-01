@@ -9,7 +9,7 @@ class Footer extends React.Component<any, any> {
     return (
       <footer className={styles.footer}>
         <Main>
-          <ul>
+          <ul className={styles.info}>
             <li>粤ICP备18043338号-1</li>
             <li>Copyright &copy; Timogal</li>
             <li><a target="_blank" href="https://github.com/timogal/react-ts-blog">网站源码</a></li>

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router';
 import { ThemeProvider } from 'components/styled';
+import { Helmet } from 'react-helmet';
 
 import 'normalize.css/normalize.css';
 
@@ -19,6 +20,9 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className={styles.container}>
+        <Helmet>
+          <title>心有猛虎,细嗅蔷薇</title>
+        </Helmet>
         <Header />
         <main className={styles.main}>
           <Switch>

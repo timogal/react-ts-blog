@@ -1,6 +1,6 @@
-import * as React from 'react';
+import * as React from "react";
 
-import styled, { keyframes } from '../styled';
+import styled, { keyframes } from "../styled";
 
 const bouncing = keyframes`
   from {
@@ -16,7 +16,8 @@ const bouncing = keyframes`
 const LoadingWrapper = styled.div`
   display: flex;
   justify-content: center;
-  
+  text-align: center;
+
   > span {
     width: 1rem;
     height: 1rem;
@@ -25,19 +26,21 @@ const LoadingWrapper = styled.div`
     border-radius: 50%;
     animation: ${bouncing} 0.6s infinite alternate;
   }
-  
-  > span:nth-child(2){
-    animation-delay: .2s;
+
+  > span:nth-child(2) {
+    animation-delay: 0.2s;
   }
-  
-  > span:nth-child(3){
-    animation-delay: .4s;
+
+  > span:nth-child(3) {
+    animation-delay: 0.4s;
   }
 `;
 
 export const Loading: React.StatelessComponent<any> = () => (
   <LoadingWrapper>
-    <span/><span/><span/>
+    <span />
+    <span />
+    <span />
   </LoadingWrapper>
 );
 
