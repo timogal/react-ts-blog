@@ -1,0 +1,13 @@
+{
+  "apps": [
+    {
+      "name": "blog-web",
+      "script": "server/index.ts",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": "8080"
+      },
+      "node_args": "--project tsconfig.server.json"
+    }
+  ]
+}
