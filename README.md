@@ -17,3 +17,11 @@ typescript配置参照：[https://github.com/Microsoft/TypeScript-React-Starter]
 * [ ]  SSR - 服务端渲染
 * [x]  Production Build
 
+### Tips
+
+#### node-sass安装失败
+
+`yarn config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/ [--global/-g]`
+
+或参考：[https://github.com/lmk123/blog/issues/28](https://github.com/lmk123/blog/issues/28)
+

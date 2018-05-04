@@ -1,4 +1,36 @@
-$max-content-width: 1200px;
+$max-content-width: 1080px;
+
+/*** font-family ***/
+$font-family: Monospaced Number, Chinese Quote, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
+
+/*** font-size ***/
+$font-size: 14px;
+$font-size-title: 16px;
+$font-size-title-normal: 20px;
+$font-size-title-large: 24px;
+
+/*** colors ***/
+$color-primary: #2ec7ff;
+$color-bg: #fff;
+$border-color: #e2e2e9;
+
+/*** text-color ***/
+$text-color: #333;
+$text-color-secondary: #666;
+$text-color-disabled: #999;
+
+/*** distance ***/
+$block-margin: 24px;
+$border-radius: 3px;
+
+/*** media queries (bootstrap)***/
+$screen-phone-max: 480px;
+$screen-xs-max: 767px;
+$screen-sm-min: 768px;
+$screen-sm-max: 991px;
+$screen-md-min: 992px;
+$screen-md-max: 1199px;
+$screen-lg-min: 1200px;
 
 /*** animations ***/
 $ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);

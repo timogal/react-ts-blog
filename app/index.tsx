@@ -3,7 +3,6 @@ import * as ReactDOM from 'react-dom';
 import { Router } from 'react-router';
 import { createBrowserHistory } from 'history';
 import * as  Loadable from 'react-loadable';
-
 import 'babel-polyfill';
 
 import App from './containers/App';
@@ -14,7 +13,7 @@ Loadable.preloadReady().then(() => {
   ReactDOM.render(
     (
       <Router history={history}>
-        <App/>
+        <App />
       </Router>
     ),
     document.getElementById('root') as HTMLElement

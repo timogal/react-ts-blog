@@ -1,9 +1,17 @@
-import styled from '../styled';
+import * as React from 'react';
+import * as cx from 'classnames';
 
-const Main = styled.div`
-  max-width: ${props => props.theme.contentWidth + 'px'};
-  width: 100%;
-  margin: 0 auto;
-`;
+import * as styles from './Main.scss';
+
+interface Props {
+  className?: string
+}
+
+const Main: React.StatelessComponent<any> = (props: Props): JSX.Element => {
+  const { className } = props;
+  return (
+    <div {...props} className={cx(styles.wrapper, className)} />
+  );
+};
 
 export default Main;

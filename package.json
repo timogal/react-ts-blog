@@ -50,6 +50,7 @@
     "@types/react-router": "^4.0.23",
     "@types/react-router-dom": "^4.2.6",
     "babel-polyfill": "^6.26.0",
+    "classnames": "^2.2.5",
     "express": "^4.16.3",
     "history": "^4.7.2",
     "normalize.css": "^8.0.0",
@@ -60,8 +61,7 @@
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "redux": "^4.0.0",
-    "styled-components": "^3.2.6"
+    "redux": "^4.0.0"
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development ts-node -P tsconfig.server.json server",
