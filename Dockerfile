@@ -1,14 +1,16 @@
 FROM node:8
 
-RUN mkdir -p /var/jenkins_home
+RUN mkdir -p /usr/app
 
-WORKDIR /var/jenkins_home
+WORKDIR /usr/app
 
-ONBUILD ADD . /var/jenkins_home
+COPY ./package.json /usr/app
 
 RUN npm i
 
-ENTRYPOINT npm start
+COPY . /usr/app
+
+CMD ["npm","start"]
 
 USER root
 
