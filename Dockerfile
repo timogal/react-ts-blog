@@ -1,8 +1,8 @@
-FROM node:latest
+FROM node:8
 
 RUN npm i
 
-EXPOSE 9000:9000
+EXPOSE 9000
 
 ENV PORT 9000
 
