@@ -8,4 +8,6 @@ ENV PORT 9000
 
 ENTRYPOINT npm start
 
+USER root
+
 
