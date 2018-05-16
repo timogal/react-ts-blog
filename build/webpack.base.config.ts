@@ -18,7 +18,11 @@ const baseModule: webpack.Rule[] = [
     options: {
       name: '[name].[ext]'
     }
-  }
+  },
+  {
+    test: /\.(ttf|eot|woff|svg)$/,
+    loader: 'file-loader',
+  },
 ];
 
 const basePlugins: webpack.Plugin[] = [

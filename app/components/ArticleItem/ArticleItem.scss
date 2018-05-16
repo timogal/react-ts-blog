@@ -1,0 +1,45 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.title {
+  margin: 0.5em 0;
+  font-size: $font-size-title;
+  color: $text-color;
+}
+
+.content {
+  color: $text-color-secondary;
+  margin-bottom: .5em;
+}
+
+.meta {
+  color: $text-color-disabled;
+  font-size: $font-size-small;
+  @include clearfix();
+
+  .tags {
+    display: inline-block;
+
+    li {
+      padding: 1px 10px;
+      background-color: #d9d9d9;
+      border-radius: 3px;
+      display: inline-block;
+      margin: 0 8px;
+    }
+
+    li:first-child {
+      margin-left: 0;
+    }
+  }
+
+  .views {
+    float: right;
+  }
+
+  .icon {
+    display: inline-block;
+    margin-right: 8px;
+    transform: translateY(1px);
+  }
+}

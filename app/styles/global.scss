@@ -42,7 +42,6 @@ a {
   }
 
   &:hover, &:focus, &:active {
-    text-decoration: underline;
     color: $color-primary;
     outline: 0;
   }

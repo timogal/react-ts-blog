@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Row, Col } from 'components/Grid';
 import Main from 'components/Main';
 import Panel from 'components/Panel';
-import Loading from 'components/Loading';
+import ArticleItem from 'components/ArticleItem';
 
 import 'assets/favicon.ico';
 
@@ -16,8 +16,23 @@ class IndexPage extends React.Component<any, any> {
         <Row gutter={24}>
           <Col span={8}>
             <Panel>
-              <h2>Website in building...</h2>
-              <Loading />
+              <a href="/p/abe12saa">
+                <ArticleItem
+                  title="测试标题"
+                  content="测试内容"
+                  views={8}
+                  categories={[{ id: 1, name: 'test' }, { id: 2, name: 'Java' }]}
+                />
+              </a>
+            </Panel>
+            <Panel>
+              <a href="#">
+                <ArticleItem
+                  title="测试标题"
+                  content="测试内容"
+                  views={8}
+                />
+              </a>
             </Panel>
           </Col>
           <Col span={4}>
