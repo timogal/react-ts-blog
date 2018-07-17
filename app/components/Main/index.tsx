@@ -3,8 +3,7 @@ import * as cx from 'classnames';
 
 import * as styles from './Main.scss';
 
-interface Props {
-  className?: string
+interface Props extends React.HTMLAttributes<any> {
 }
 
 const Main: React.StatelessComponent<any> = (props: Props): JSX.Element => {

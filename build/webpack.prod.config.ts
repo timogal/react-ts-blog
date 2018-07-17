@@ -21,7 +21,7 @@ export default mergeConfig({
         test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader?modules&camelCase&importLoaders=1&localIdentName=[local]-[hash:base64:8]',
+          'css-loader?modules&camelCase&importLoaders=1&localIdentName=[local]-[hash:8]',
           'postcss-loader',
           'sass-loader',
         ]
@@ -49,6 +49,9 @@ export default mergeConfig({
   ],
   optimization: {
     minimize: true,
+    runtimeChunk: {
+      name: 'manifest'
+    },
     splitChunks: {
       name: 'vendor',
       chunks: 'all',
