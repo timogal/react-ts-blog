@@ -1,40 +1,69 @@
 import * as React from 'react';
-import Icon from '../Icon';
+import { Icon, Breadcrumb } from 'antd';
+import cx from 'classnames';
+import { Link } from 'react-router-dom';
 
-import * as styles from './ArticleItem.scss';
+import styles from './ArticleItem.scss';
 
-interface Category {
+interface Meta {
   id: number,
   name: string
 }
 
-interface Props {
+interface Props extends React.HTMLAttributes<any> {
+  pid: string,
   title: string,
   content: string,
   views: number
-  images?: string[],
-  categories?: Category[]
+  background?: string,
+  categories?: Meta[],
+  tags?: Meta[],
 }
+
+const BreadItem = Breadcrumb.Item;
 
 class ArticleItem extends React.Component<Props, any> {
   render(): JSX.Element {
-    const { title, content, images, categories, views, children, ...restProps } = this.props;
+    const { pid, title, content, background, categories, views, tags, className, ...restProps } = this.props;
+    const tagText = tags ? tags.map(item => item.name).join('/') : null;
+    const wrapClass = cx({ [styles.withImage]: !!background }, className);
     return (
-      <div {...restProps}>
-        <h2 className={styles.title}>{title}</h2>
-        <div className={styles.content}>{content}</div>
-        <div className={styles.meta}>
-          <ul className={styles.tags}>
+      <div {...restProps} className={wrapClass}>
+        {
+          background &&
+          <a href={`/p/${pid}`}>
+            <div className={styles.background}>
+              <img src={background} />
+            </div>
+          </a>
+        }
+        <div className={styles.wrap}>
+          <h2 className={styles.title}>
+            <a href={`/p/${pid}`}>{title}</a>
+          </h2>
+          <Breadcrumb separator="|" className={styles.categories}>
             {
-              categories && categories.map(category => (
-                <li key={category.id}>{category.name}</li>
+              categories && categories.map(item => (
+                <BreadItem key={item.id}>
+                  <Link to={`/category/${item.id}`}>{item.name}</Link>
+                </BreadItem>
               ))
             }
-          </ul>
-          <div className={styles.views}>
+          </Breadcrumb>
+          <div className={styles.content}>{content}</div>
+          <div className={styles.meta}>
+            {
+              tagText &&
+              <span className={styles.tags}>
+                <Icon className={styles.icon} type="tag-o" /> {tagText}
+              </span>
+            }
             <span>
               <Icon type="eye" className={styles.icon} />
               {views}
+            </span>
+            <span>
+              <Icon className={styles.icon} type="calendar" /> 2018-05-06
             </span>
           </div>
         </div>

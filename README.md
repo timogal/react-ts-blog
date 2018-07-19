@@ -15,6 +15,7 @@ typescript配置参照：[https://github.com/Microsoft/TypeScript-React-Starter]
 * [ ]  Redux状态管理
 * [ ]  主体页面
 * [ ]  SSR - 服务端渲染
+* [ ]  响应式
 * [x]  Production Build
 
 ### Tips

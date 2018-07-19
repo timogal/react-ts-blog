@@ -1,11 +1,37 @@
 @import "../../styles/variables";
 
+.root {
+  padding-top: 30px;
+}
+
 .friend-links {
   li {
     padding: 8px 0;
 
     a {
       display: block;
+      color: $text-color;
+    }
+
+    a:hover {
+      color: $primary-color;
+      text-decoration: underline;
+    }
+  }
+}
+
+.post-item {
+  padding: $padding-sm 0;
+  margin-bottom: $padding-lg;
+  border-bottom: solid 1px $border-color-base;
+}
+
+.panel {
+  margin-bottom: $padding-lg;
+
+  :global {
+    .ant-card-body {
+      padding: 12px 24px;
     }
   }
 }

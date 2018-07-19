@@ -1,8 +1,10 @@
-import * as path from "path";
+import * as path from 'path';
 import * as webpack from 'webpack';
 
 import mergeConfig from './webpack.base.config';
+import { lessLoader, sassLoader } from './less.config';
 
+const AntdScssThemePlugin = require('antd-scss-theme-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 export default mergeConfig({
@@ -19,14 +21,22 @@ export default mergeConfig({
   },
   module: {
     rules: [
-      {test: /\.js$/, enforce: 'pre', loader: 'source-map-loader'},
+      { test: /\.js$/, enforce: 'pre', loader: 'source-map-loader' },
+      {
+        test: /\.less$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          lessLoader,
+        ]
+      },
       {
         test: /\.scss$/,
         use: [
-          {loader: 'style-loader'},
-          {loader: 'css-loader?modules&camelCase&importLoaders=1&localIdentName=[local]-[hash:base64:8]'},
-          {loader: 'postcss-loader'},
-          {loader: 'sass-loader'}
+          { loader: 'style-loader' },
+          { loader: 'css-loader?modules&camelCase&importLoaders=1&localIdentName=[local]-[hash:base64:8]' },
+          { loader: 'postcss-loader' },
+          sassLoader,
         ],
         exclude: /node_modules/
       },
@@ -42,6 +52,15 @@ export default mergeConfig({
       inject: true,
       template: 'app/index.html',
       filename: 'server/template/index.html'
-    })
-  ]
+    }),
+  ],
+  optimization: {
+    splitChunks: false
+  },
+  devServer: {
+    hot: true,
+    inline: true,
+    open: true,
+    stats: 'errors-only'
+  }
 });

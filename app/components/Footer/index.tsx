@@ -2,13 +2,13 @@ import * as React from 'react';
 
 import Main from '../Main';
 
-import * as styles from './footer.scss';
+import styles from './footer.scss';
 
 class Footer extends React.Component<any, any> {
   render() {
     return (
       <footer className={styles.footer}>
-        <Main>
+        <Main className={styles.content}>
           <ul className={styles.info}>
             <li>粤ICP备18043338号-1</li>
             <li>Copyright &copy; Timogal</li>

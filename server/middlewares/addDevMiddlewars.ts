@@ -10,10 +10,7 @@ import webpackConfig from '../../build/webpack.dev.config';
 function createWebpackMiddleware(compiler: webpack.Compiler, publicPath: string) {
   return webpackDevMiddleware(compiler, {
     publicPath,
-    stats: {
-      errors: true,
-      errorDetails: true
-    },
+    ...webpackConfig.devServer,
   });
 }
 

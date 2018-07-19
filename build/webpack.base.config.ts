@@ -1,11 +1,15 @@
 import * as webpack from 'webpack';
-import * as path from "path";
+import * as path from 'path';
 import { CheckerPlugin } from 'awesome-typescript-loader';
+import { lessPlugin } from './less.config';
 
 const baseModule: webpack.Rule[] = [
   {
     test: /\.tsx?$/,
-    loader: 'babel-loader!awesome-typescript-loader',
+    use: [
+      'babel-loader',
+      'awesome-typescript-loader'
+    ],
     exclude: /node_modules/
   },
   {
@@ -20,13 +24,14 @@ const baseModule: webpack.Rule[] = [
     }
   },
   {
-    test: /\.(ttf|eot|woff|svg)$/,
+    test: /\.(ttf|eot|woff|svg|png|jpg|gif)$/,
     loader: 'file-loader',
   },
 ];
 
 const basePlugins: webpack.Plugin[] = [
   new CheckerPlugin(),
+  lessPlugin,
 ];
 
 function mergeConfig(another: webpack.Configuration): webpack.Configuration {
@@ -46,7 +51,8 @@ function mergeConfig(another: webpack.Configuration): webpack.Configuration {
       rules: another.module ? baseModule.concat(another.module.rules) : baseModule
     },
     plugins: another.plugins ? basePlugins.concat(another.plugins) : basePlugins,
-    optimization: another.optimization
+    optimization: another.optimization,
+    devServer: another.devServer,
   };
 }
 

@@ -1,19 +1,18 @@
-declare module '*.scss' {
-  const content: any;
-
-  export = content;
-}
-
-declare module 'normalize.css' {
-}
-
 declare module 'babel-polyfill' {
 }
 
+declare module '*.scss' {
+  const content: any;
+
+  export default content;
+}
+
 declare module 'classnames' {
-  type Param = undefined | string | number | string[] | {[K in string]: boolean};
+  export default function (...args: any[]): string;
+}
 
-  const cx: (first: Param, ...rest: Param[]) => string;
+declare module '*.png' {
+  const pngPath: string;
 
-  export = cx;
+  export default pngPath;
 }

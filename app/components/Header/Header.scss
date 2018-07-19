@@ -1,14 +1,43 @@
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 $header-height: 70px;
+$inner-width: 1440px;
+
+$side-width: ($inner-width - $max-content-width) / 2;
 
 .header {
   background-color: #fff;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .3);
+
+  .inner {
+    width: $inner-width;
+    margin: 0 auto;
+    @include clearfix();
+  }
+}
+
+.logo {
+  float: left;
+  height: $header-height;
+  width: $side-width;
+
+  img {
+    height: 100%;
+    width: auto;
+  }
+}
+
+.search {
+  float: right;
+  height: $header-height;
+  width: $side-width;
+  padding: ($header-height - $input-height-base) / 2;
 }
 
 .content {
   height: $header-height;
+  float: left;
 }
 
 .menu {
@@ -20,7 +49,7 @@ $header-height: 70px;
     display: inline-block;
     height: $header-height;
     padding: 0 24px;
-    font-size: $font-size-title;
+    font-size: $font-size-lg;
 
     a {
       line-height: $header-height;

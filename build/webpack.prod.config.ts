@@ -1,9 +1,10 @@
-import * as webpack from 'webpack';
-
 import mergeConfig from './webpack.base.config';
+import { lessLoader, sassLoader } from './less.config';
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyjsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin');
 
 export default mergeConfig({
   mode: 'production',
@@ -18,12 +19,20 @@ export default mergeConfig({
   module: {
     rules: [
       {
+        test: /\.less$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          lessLoader,
+        ]
+      },
+      {
         test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader?modules&camelCase&importLoaders=1&localIdentName=[local]-[hash:8]',
           'postcss-loader',
-          'sass-loader',
+          sassLoader,
         ]
       },
       {
@@ -48,7 +57,20 @@ export default mergeConfig({
     })
   ],
   optimization: {
-    minimize: true,
+    noEmitOnErrors: true,
+    namedModules: true,
+    minimizer: [
+      new UglifyjsPlugin({
+        cache: true,
+        parallel: true,
+        uglifyOptions: {
+          compress: {
+            drop_console: true
+          }
+        },
+      }),
+      new OptimizeCssPlugin()
+    ],
     runtimeChunk: {
       name: 'manifest'
     },

@@ -1,7 +1,12 @@
+@import "../../styles/variables";
+
 .footer {
-  background-color: #fff;
   height: 60px;
-  padding: 8px 0;
+
+  .content {
+    border-top: solid 1px $border-color-base;
+    padding: 8px 0;
+  }
 
   .info {
     float: right;

@@ -2,44 +2,81 @@
 @import "../../styles/mixins";
 
 .title {
-  margin: 0.5em 0;
-  font-size: $font-size-title;
+  @include text-ellipsis();
+  margin-bottom: 0.5em;
+  font-size: $font-size-lg;
+  color: $heading-color;
+  font-weight: bold;
+
+  > a {
+    color: inherit;
+    font-weight: inherit;
+  }
+
+  > a:hover {
+    text-decoration: underline;
+  }
+}
+
+.categories {
   color: $text-color;
+  font-weight: 600;
+  margin-bottom: 12px;
 }
 
 .content {
-  color: $text-color-secondary;
-  margin-bottom: .5em;
+  color: $text-color;
+  margin-bottom: 12px;
+  max-height: $line-height-base * 2em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
 }
 
 .meta {
-  color: $text-color-disabled;
-  font-size: $font-size-small;
+  color: $text-color-secondary;
+  font-size: $font-size-sm;
   @include clearfix();
 
-  .tags {
-    display: inline-block;
-
-    li {
-      padding: 1px 10px;
-      background-color: #d9d9d9;
-      border-radius: 3px;
-      display: inline-block;
-      margin: 0 8px;
-    }
-
-    li:first-child {
-      margin-left: 0;
-    }
+  > span {
+    margin-right: 16px;
   }
 
-  .views {
-    float: right;
+  .tags {
+    color: $text-color;
   }
 
   .icon {
     display: inline-block;
     margin-right: 8px;
     transform: translateY(1px);
+    font-size: $font-size-base;
+    font-weight: bold;
+  }
+}
+
+.with-image {
+  @include clearfix();
+
+  .wrap {
+    margin-left: 168px;
+    padding-left: 12px;
+    overflow: hidden;
+  }
+
+  .background {
+    float: left;
+    width: 160px;
+    height: 120px;
+
+    img {
+      object-fit: cover;
+      object-position: center;
+      font-family: 'object-fit: cover;object-position: center;';
+      width: 100%;
+      height: 100%;
+    }
   }
 }
