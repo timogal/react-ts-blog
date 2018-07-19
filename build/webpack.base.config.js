@@ -1,9 +1,9 @@
-import * as webpack from 'webpack';
-import * as path from 'path';
-import { CheckerPlugin } from 'awesome-typescript-loader';
-import { lessPlugin } from './less.config';
+const webpack = require('webpack');
+const path = require('path');
+const { CheckerPlugin } = require('awesome-typescript-loader');
+const { lessPlugin } = require('./less.config');
 
-const baseModule: webpack.Rule[] = [
+const baseModule = [
   {
     test: /\.tsx?$/,
     use: [
@@ -29,12 +29,12 @@ const baseModule: webpack.Rule[] = [
   },
 ];
 
-const basePlugins: webpack.Plugin[] = [
+const basePlugins = [
   new CheckerPlugin(),
   lessPlugin,
 ];
 
-function mergeConfig(another: webpack.Configuration): webpack.Configuration {
+function mergeConfig(another) {
   return {
     mode: another.mode || 'development',
     devtool: another.devtool,
@@ -56,4 +56,4 @@ function mergeConfig(another: webpack.Configuration): webpack.Configuration {
   };
 }
 
-export default mergeConfig;
+module.exports = mergeConfig;

@@ -1,12 +1,12 @@
-import mergeConfig from './webpack.base.config';
-import { lessLoader, sassLoader } from './less.config';
+const mergeConfig = require('./webpack.base.config');
+const { lessLoader, sassLoader } = require('./less.config');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyjsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin');
 
-export default mergeConfig({
+module.exports = mergeConfig({
   mode: 'production',
   entry: {
     app: './app/index'

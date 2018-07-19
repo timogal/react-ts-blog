@@ -5,7 +5,7 @@ import * as express from 'express';
 import * as webpackDevMiddleware from 'webpack-dev-middleware';
 import * as webpackHotMiddleware from 'webpack-hot-middleware';
 
-import webpackConfig from '../../build/webpack.dev.config';
+const webpackConfig = require('../../build/webpack.dev.config');
 
 function createWebpackMiddleware(compiler: webpack.Compiler, publicPath: string) {
   return webpackDevMiddleware(compiler, {
@@ -15,7 +15,7 @@ function createWebpackMiddleware(compiler: webpack.Compiler, publicPath: string)
 }
 
 function setup(app: express.Application) {
-  const compiler = webpack(webpackConfig);
+  const compiler = webpack(webpackConfig as webpack.Configuration);
 
   compiler.hooks.emit.tap('html-emit', function (compilation) {
     const assets = compilation.assets;

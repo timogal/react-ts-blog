@@ -71,7 +71,7 @@
     "dev": "cross-env NODE_ENV=development ts-node -P tsconfig.server.json server",
     "clean": "rimraf dist/*",
     "prebuild": "npm run clean",
-    "build": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig.server.json\" webpack --config build/webpack.prod.config.ts",
+    "build": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig.server.json\" webpack --config build/webpack.prod.config.js",
     "prestart": "npm run build",
     "start": "cross-env NODE_ENV=production ts-node -P tsconfig.server.json server"
   }

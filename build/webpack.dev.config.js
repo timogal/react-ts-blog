@@ -1,13 +1,11 @@
-import * as path from 'path';
-import * as webpack from 'webpack';
+const path = require('path');
+const webpack = require('webpack');
 
-import mergeConfig from './webpack.base.config';
-import { lessLoader, sassLoader } from './less.config';
-
-const AntdScssThemePlugin = require('antd-scss-theme-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const mergeConfig = require('./webpack.base.config');
+const { lessLoader, sassLoader } = require('./less.config');
 
-export default mergeConfig({
+module.exports = mergeConfig({
   devtool: 'source-map',
   entry: [
     'webpack-hot-middleware/client?reload=true&path=/__webpack_hmr',
