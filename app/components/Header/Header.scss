@@ -6,7 +6,17 @@ $inner-width: 1440px;
 
 $side-width: ($inner-width - $max-content-width) / 2;
 
+.header-root {
+  padding-top: $header-height;
+}
+
 .header {
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: $header-height;
   background-color: #fff;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .3);
 
