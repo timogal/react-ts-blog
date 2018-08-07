@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import Main from '../Main';
 
-import styles from './footer.scss';
+import * as styles from './footer.scss';
 
 class Footer extends React.Component<any, any> {
   render() {

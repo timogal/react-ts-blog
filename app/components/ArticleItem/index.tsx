@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Icon, Breadcrumb } from 'antd';
-import cx from 'classnames';
+import * as cx from 'classnames';
 import { Link } from 'react-router-dom';
 
-import styles from './ArticleItem.scss';
+import * as styles from './ArticleItem.scss';
 
 interface Meta {
   id: number,

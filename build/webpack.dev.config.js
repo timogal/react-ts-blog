@@ -32,7 +32,7 @@ module.exports = mergeConfig({
         test: /\.scss$/,
         use: [
           { loader: 'style-loader' },
-          { loader: 'css-loader?modules&camelCase&importLoaders=1&localIdentName=[local]-[hash:base64:8]' },
+          { loader: 'css-loader?modules&camelCase&importLoaders=1&localIdentName=[local]-[hash:8]' },
           { loader: 'postcss-loader' },
           sassLoader,
         ],

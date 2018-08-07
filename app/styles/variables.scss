@@ -3,3 +3,24 @@ $max-content-width: 960px;
 $input-height-base: 40px;
 $input-height-lg: 48px;
 $input-height-sm: 32px;
+
+// antd variables
+
+$primary-color: #1890ff;
+$font-size-base: 14px;
+$font-size-lg: $font-size-base + 2px;
+$font-size-sm: 12px;
+$line-height-base: 1.5;
+$border-radius-base: 4px;
+$border-radius-sm: 2px;
+
+$heading-color: fade(#000, 85%);
+$text-color: fade(#000, 65%);
+$text-color-secondary: fade(#000, 45%);
+$border-color-base: #eee; // base border outline a component
+$border-color-split: #eee; // split border inside a component
+// vertical paddings
+$padding-lg: 24px; // containers
+$padding-md: 16px; // small containers and buttons
+$padding-sm: 12px; // Form controls and items
+$padding-xs: 8px; // small items

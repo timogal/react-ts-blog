@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Input } from 'antd';
 
-import logo from 'assets/logo.png';
+import * as logo from 'assets/logo.png';
 
 import Main from '../Main';
 
-import styles from './Header.scss';
+import * as styles from './Header.scss';
 
 const SearchInput = Input.Search;
 

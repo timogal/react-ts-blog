@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "jsx": "react",
     "allowJs": true,
     "moduleResolution": "node",
@@ -10,8 +10,11 @@
       "es6"
     ],
     "outDir": "dist",
-    "rootDir": "server",
-    "baseUrl": "./",
+    "rootDirs": [
+      "server",
+      "app"
+    ],
+    "baseUrl": ".",
     "paths": {
       "components/*": [
         "app/components/*"
@@ -21,6 +24,12 @@
       ],
       "types/*": [
         "app/types/*"
+      ],
+      "assets/*": [
+        "app/assets/*"
+      ],
+      "utils/*": [
+        "app/utils/*"
       ]
     },
     "noImplicitReturns": true,
@@ -33,5 +42,8 @@
     "node_modules",
     "build",
     "dist"
+  ],
+  "include": [
+    "index.d.ts"
   ]
 }
