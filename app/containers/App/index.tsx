@@ -7,9 +7,10 @@ import Footer from 'components/Footer';
 import Sidebar from 'components/Sidebar';
 import IndexPage from 'containers/IndexPage/async';
 import AboutPage from 'containers/About/async';
-import DetailPage from 'containers/DetailPage/async';
 
-import styles from './app.scss';
+import ssrRoutes from '../../ssrRoutes';
+
+import * as styles from './app.scss';
 
 export default function App() {
   return (
@@ -22,7 +23,11 @@ export default function App() {
         <Switch>
           <Route exact path="/" component={IndexPage} />
           <Route path="/about" component={AboutPage} />
-          <Route path="/p/:id" component={DetailPage} />
+          {
+            ssrRoutes.map(({ path, component }) => (
+              <Route key={path} path={path} component={component} />
+            ))
+          }
         </Switch>
       </main>
       <Footer />

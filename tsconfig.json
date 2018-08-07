@@ -25,6 +25,9 @@
       ],
       "assets/*": [
         "app/assets/*"
+      ],
+      "utils/*": [
+        "app/utils/*"
       ]
     },
     "noImplicitReturns": true,

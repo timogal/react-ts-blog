@@ -4,7 +4,7 @@ declare module 'babel-polyfill' {
 declare module '*.scss' {
   const content: any;
 
-  export default content;
+  export = content;
 }
 
 declare module 'connected-react-router/immutable' {
@@ -23,11 +23,12 @@ declare module 'connected-react-router/immutable' {
 }
 
 declare module 'classnames' {
-  export default function (...args: any[]): string;
+  const cx: (...args: any[]) => string;
+  export = cx;
 }
 
 declare module '*.png' {
   const pngPath: string;
 
-  export default pngPath;
+  export = pngPath;
 }

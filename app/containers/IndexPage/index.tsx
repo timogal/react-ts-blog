@@ -8,7 +8,7 @@ import 'assets/favicon.ico';
 
 import { posts, newestPosts } from './mock';
 
-import styles from './Index.scss';
+import * as styles from './Index.scss';
 
 class IndexPage extends React.Component<any, any> {
   render(): JSX.Element {

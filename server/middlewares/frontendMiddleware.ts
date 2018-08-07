@@ -2,7 +2,6 @@ import * as express from 'express';
 import * as path from "path";
 
 import setupDev from './addDevMiddlewars';
-import * as fs from "fs";
 
 function setup(app: express.Application) {
   if (process.env.NODE_ENV === 'development') {
@@ -11,7 +10,7 @@ function setup(app: express.Application) {
     app.use(express.static(path.join(process.cwd(), 'dist')));
   }
 
-  app.get('*', (request, response) => {
+  /*app.get('*', (request, response) => {
     fs.readFile(path.join(process.cwd(), 'server/template/index.html'), {}, (err: Error, file: any) => {
       if (err) {
         response.sendStatus(404);
@@ -19,7 +18,7 @@ function setup(app: express.Application) {
         response.send(file.toString());
       }
     });
-  });
+  });*/
 }
 
 export default setup;

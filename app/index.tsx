@@ -11,10 +11,14 @@ import configureStore from './configureStore';
 
 const history = createBrowserHistory();
 
-const store = configureStore({}, history);
+const initialState = (window as any).__INITIAL_STATE__;
+
+console.log('initialState = ', initialState);
+
+const store = configureStore(initialState, history);
 
 Loadable.preloadReady().then(() => {
-  ReactDOM.render(
+  ReactDOM.hydrate(
     (
       <Provider store={store}>
         <ConnectedRouter history={history}>

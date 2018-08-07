@@ -5,10 +5,14 @@ import {
   applyMiddleware,
   compose,
   createStore,
-  Store,
 } from 'redux';
 
+import createSagaMiddleware from 'redux-saga';
+
+import { EnhancedStore } from "types/index";
+
 import reducers from './reducers';
+
 
 const composeEnhancer = process.env.NODE_ENV !== 'production'
 && typeof window === 'object'
@@ -19,14 +23,24 @@ const composeEnhancer = process.env.NODE_ENV !== 'production'
   })
   : compose;
 
-export default function configureStore(initialState: any = {}, history: History): Store {
-  return createStore(
+const sagaMiddleware = createSagaMiddleware();
+
+export default function configureStore(initialState: any = {}, history: History): EnhancedStore {
+  const store = createStore(
     connectRouter(history)(reducers),
     fromJS(initialState),
     composeEnhancer(
       applyMiddleware(
+        sagaMiddleware,
         routerMiddleware(history)
       )
     )
   );
+
+  const enhancedStore = (store as EnhancedStore);
+
+  // extensions
+  enhancedStore.runSaga = sagaMiddleware.run;
+
+  return store as EnhancedStore;
 }

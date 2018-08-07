@@ -5,6 +5,7 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
+    "@types/ejs": "^2.6.0",
     "@types/express": "^4.11.1",
     "@types/node": "^9.6.6",
     "@types/react": "^16.3.12",
@@ -39,6 +40,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.0",
     "postcss-cssnext": "^3.1.0",
     "postcss-import": "^11.1.0",
+    "postcss-less": "^2.0.0",
     "postcss-loader": "^2.1.4",
     "postcss-scss": "^1.0.5",
     "rimraf": "^2.6.2",
@@ -55,12 +57,17 @@
   },
   "dependencies": {
     "antd": "^3.7.0",
+    "asset-require-hook": "^1.2.0",
+    "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.5",
     "connected-react-router": "^4.3.0",
+    "css-modules-require-hook": "^4.2.3",
+    "ejs": "^2.6.1",
     "express": "^4.16.3",
     "history": "^4.7.2",
     "immutable": "^3.8.2",
+    "module-alias": "^2.1.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-helmet": "^5.2.0",
@@ -69,7 +76,9 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "redux": "^4.0.0",
-    "redux-immutable": "^4.0.0"
+    "redux-immutable": "^4.0.0",
+    "redux-saga": "^0.16.0",
+    "reselect": "^3.0.1"
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development ts-node -P tsconfig.server.json server",
@@ -78,5 +87,9 @@
     "build": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig.server.json\" webpack --config build/webpack.prod.config.js",
     "prestart": "npm run build",
     "start": "cross-env NODE_ENV=production ts-node -P tsconfig.server.json server"
-  }
+  },
+  "_moduleDirectories": [
+    "node_modules",
+    "app"
+  ]
 }

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import cx from 'classnames';
+import * as cx from 'classnames';
 
-import styles from './Main.scss';
+import * as styles from './Main.scss';
 
 interface Props extends React.HTMLAttributes<any> {
 }

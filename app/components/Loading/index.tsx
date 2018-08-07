@@ -1,7 +1,7 @@
 import * as React from 'react';
-import cx from 'classnames';
+import * as cx from 'classnames';
 
-import styles from './Loading.scss';
+import * as styles from './Loading.scss';
 
 interface Props {
   className?: string
