@@ -2,11 +2,11 @@ import * as React from 'react';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import * as express from 'express';
-// @ts-ignore
-import { ConnectedRouter } from 'connected-react-router/immutable';
+import { StaticRouter } from 'react-router-dom';
 import { matchPath } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import * as qs from 'qs';
 
 import configureStore from '../../app/configureStore';
 import App from '../../app/containers/App';
@@ -25,7 +25,15 @@ async function clientRoute(
     return next();
   }
 
-  const initialState = {};
+  const initialState = {
+    router: {
+      location: {
+        pathname: url,
+        search: `?${qs.stringify(request.query)}`
+      },
+      action: 'POP'
+    }
+  };
   const history = createMemoryHistory();
 
   const store = configureStore(initialState, history);
@@ -49,9 +57,9 @@ async function clientRoute(
 
   const html = renderToString((
     <Provider store={store}>
-      <ConnectedRouter history={history} location={url} context={context}>
+      <StaticRouter location={url} context={context}>
         <App />
-      </ConnectedRouter>
+      </StaticRouter>
     </Provider>
   ));
 

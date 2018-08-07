@@ -15,9 +15,7 @@ import * as styles from './app.scss';
 export default function App() {
   return (
     <div className={styles.container}>
-      <Helmet>
-        <title>心有猛虎,细嗅蔷薇</title>
-      </Helmet>
+      <Helmet titleTemplate="%s - 心有猛虎,细嗅蔷薇" defaultTitle="心有猛虎,细嗅蔷薇" />
       <Header />
       <main className={styles.main}>
         <Switch>
