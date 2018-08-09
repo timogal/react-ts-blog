@@ -13,7 +13,8 @@ export type LoadData = (store: EnhancedStore, match: matchType<any>) => Promise<
 export interface SsrRoute {
   path: string
   component: React.ComponentType<any>
-  loadData?: LoadData
+  loadData?: LoadData,
+  exact?: boolean
 }
 
 

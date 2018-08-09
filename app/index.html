@@ -5,6 +5,9 @@
     <%- title %>
     <link rel="icon shortcut" href="/favicon.ico">
     <link rel="bookmark" href="/favicon.ico">
+    <% if (prefetch) { %>
+    <link rel="dns-prefetch" href="<%- prefetch %>">
+    <% } %>
     <!-- BAIDU -->
     <meta name="baidu-site-verification" content="igaKoLEeLg" />
     <!-- GOOGLE -->

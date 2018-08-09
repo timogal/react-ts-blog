@@ -1,0 +1,61 @@
+@import "../../styles/variables";
+
+$color-facebook: #2d4485;
+$color-google: #4285f4;
+$color-twitter: #41abe1;
+$color-wechat: #64aa23;
+$color-qq: #00bcf2;
+$color-weibo: #da251c;
+$color-douban: #46a960;
+
+.share-list {
+  list-style: none;
+  padding: 8px 0;
+
+  > li {
+    display: inline-block;
+    margin: 0 8px;
+    vertical-align: middle;
+
+    &:first-child {
+      margin-left: 0;
+      color: $text-color-secondary;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .icon {
+    font-size: 20px;
+  }
+}
+
+.icon.weibo {
+  color: $color-weibo;
+}
+
+.icon.facebook {
+  color: $color-facebook;
+}
+
+.icon.twitter {
+  color: $color-twitter;
+}
+
+.icon.weixin {
+  color: $color-wechat;
+}
+
+.icon.google {
+  color: $color-google;
+}
+
+.icon.douban {
+  color: $color-douban;
+}
+
+.icon.qq {
+  color: $color-qq;
+}

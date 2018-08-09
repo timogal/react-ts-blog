@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 setupAssetHook({
-  extensions: ['ico'],
+  extensions: ['ico', 'txt'],
   name: '[name].[ext]',
   publicPath: webpackConfig.output.publicPath || '/',
 });

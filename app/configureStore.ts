@@ -13,7 +13,6 @@ import { EnhancedStore } from "types/index";
 
 import reducers from './reducers';
 
-
 const composeEnhancer = process.env.NODE_ENV !== 'production'
 && typeof window === 'object'
 && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -42,5 +41,5 @@ export default function configureStore(initialState: any = {}, history: History)
   // extensions
   enhancedStore.runSaga = sagaMiddleware.run;
 
-  return store as EnhancedStore;
+  return enhancedStore;
 }

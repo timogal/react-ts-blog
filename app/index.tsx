@@ -6,14 +6,15 @@ import { createBrowserHistory } from 'history';
 import * as  Loadable from 'react-loadable';
 import 'babel-polyfill';
 
+import 'assets/favicon.ico';
+import 'assets/robots.txt';
+
 import App from './containers/App';
 import configureStore from './configureStore';
 
 const history = createBrowserHistory();
 
 const initialState = (window as any).__INITIAL_STATE__;
-
-console.log('initialState = ', initialState);
 
 const store = configureStore(initialState, history);
 

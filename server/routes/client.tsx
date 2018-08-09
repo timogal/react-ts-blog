@@ -10,10 +10,11 @@ import * as qs from 'qs';
 
 import configureStore from '../../app/configureStore';
 import App from '../../app/containers/App';
+import { IMAGE_BASE } from '../../app/utils/env';
 import ssrRoutes from '../../app/ssrRoutes';
 
 function isStaticPath(url: string): boolean {
-  return /\.(ico|png|jpg|gif|woff|woff2|svg|ttf|eof|js|css|json)$/.test(url);
+  return /\.(ico|png|jpg|gif|woff|woff2|svg|ttf|eof|js|css|json|txt)$/.test(url);
 }
 
 async function clientRoute(
@@ -25,11 +26,13 @@ async function clientRoute(
     return next();
   }
 
+  const search = qs.stringify(request.query);
+
   const initialState = {
     router: {
       location: {
         pathname: url,
-        search: `?${qs.stringify(request.query)}`
+        search: search ? `?${search}` : ''
       },
       action: 'POP'
     }
@@ -69,7 +72,8 @@ async function clientRoute(
     content: html,
     title: helmet.title ? helmet.title.toString() : '<title>心有猛虎，细嗅蔷薇</title>',
     meta: helmet.meta.toString(),
-    state: JSON.stringify(store.getState().toJS())
+    state: JSON.stringify(store.getState().toJS()),
+    prefetch: IMAGE_BASE,
   });
 }
 

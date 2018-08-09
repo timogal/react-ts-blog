@@ -6,6 +6,10 @@ import { Link } from 'react-router-dom';
 import * as moment from 'moment';
 import { Helmet } from 'react-helmet';
 
+import Share from 'components/Share';
+import { BASE_URL } from 'utils/env';
+import resolveImage from 'utils/resolve-image';
+
 import { makeSelectDetail } from './selectors';
 
 import 'highlight.js/styles/github.css';
@@ -80,6 +84,13 @@ class DetailPage extends React.Component<DetailProps, any> {
           ref={(instance) => this.htmlContainer = instance}
           className={styles.article}
           dangerouslySetInnerHTML={{ __html: detail.content }}
+        />
+        <Share
+          className={styles.share}
+          title={detail.title}
+          description={detail.remark}
+          pic={detail.backgroundImage ? resolveImage(detail.backgroundImage) : undefined}
+          url={`${BASE_URL}/p/${detail.id}`}
         />
       </div>
     );

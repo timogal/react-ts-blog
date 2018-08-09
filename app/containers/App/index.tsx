@@ -5,7 +5,6 @@ import { Helmet } from 'react-helmet';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import Sidebar from 'components/Sidebar';
-import IndexPage from 'containers/IndexPage/async';
 import AboutPage from 'containers/About/async';
 
 import ssrRoutes from '../../ssrRoutes';
@@ -19,13 +18,12 @@ export default function App() {
       <Header />
       <main className={styles.main}>
         <Switch>
-          <Route exact path="/" component={IndexPage} />
-          <Route path="/about" component={AboutPage} />
           {
-            ssrRoutes.map(({ path, component }) => (
-              <Route key={path} path={path} component={component} />
+            ssrRoutes.map(({ path, component, exact }) => (
+              <Route key={path} path={path} component={component} exact={exact} />
             ))
           }
+          <Route path="/about" component={AboutPage} />
         </Switch>
       </main>
       <Footer />

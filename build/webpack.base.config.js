@@ -17,7 +17,7 @@ const baseModule = [
     loader: 'html-loader'
   },
   {
-    test: /\.ico$/,
+    test: /\.(ico|txt)$/,
     loader: 'file-loader',
     options: {
       name: '[name].[ext]'
