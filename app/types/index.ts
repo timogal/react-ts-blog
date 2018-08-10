@@ -4,6 +4,8 @@ import { match as matchType } from "react-router";
 
 interface StoreExt {
   runSaga: (...args: any[]) => any
+  injectSaga?: () => any
+  injectedSagas: { [K: string]: any }
 }
 
 export type EnhancedStore = Store & StoreExt;

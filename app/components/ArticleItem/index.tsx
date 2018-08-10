@@ -3,12 +3,13 @@ import { Icon, Breadcrumb } from 'antd';
 import * as cx from 'classnames';
 import { Link } from 'react-router-dom';
 import * as moment from 'moment';
+import LazyLoad from 'react-lazyload';
 
-import resolveImage from 'utils/resolve-image';
+import resolveImage from 'utils/resolveImage';
 
 import * as styles from './ArticleItem.scss';
 
-import * as defaultIamge from 'assets/default.png';
+import * as defaultImage from 'assets/default.png';
 
 interface Meta {
   id: number,
@@ -48,11 +49,13 @@ class ArticleItem extends React.Component<Props, any> {
           background && (
             <a href={`/p/${pid}`}>
               <div className={styles.background}>
-                <img
-                  src={imageError ? defaultIamge : resolveImage(background)}
-                  alt=""
-                  onError={this.onImageError}
-                />
+                <LazyLoad height={160}>
+                  <img
+                    src={imageError ? defaultImage : resolveImage(background)}
+                    alt=""
+                    onError={this.onImageError}
+                  />
+                </LazyLoad>
               </div>
             </a>
           )

@@ -3,7 +3,7 @@ import { Icon } from 'antd';
 import { Helmet } from 'react-helmet';
 import * as cx from 'classnames';
 
-import loadScript from 'utils/load-script';
+import loadScript from 'utils/loadScript';
 import { SHARE_APP_KEY } from 'utils/env';
 
 import * as styles from './share.scss';

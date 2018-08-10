@@ -1,7 +1,7 @@
 import { fromJS, List } from 'immutable';
 import { AnyAction } from 'redux';
 
-import { START_LOADING, LOAD_FAILED, LOAD_SUCCESS } from './contants';
+import { START_LOADING, LOAD_FAILED, LOAD_SUCCESS } from './constants';
 
 const initialState = fromJS({
   loading: false,

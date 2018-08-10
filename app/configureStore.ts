@@ -41,5 +41,7 @@ export default function configureStore(initialState: any = {}, history: History)
   // extensions
   enhancedStore.runSaga = sagaMiddleware.run;
 
+  enhancedStore.injectedSagas = {};
+
   return enhancedStore;
 }

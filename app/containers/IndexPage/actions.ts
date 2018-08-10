@@ -1,4 +1,11 @@
-import { START_LOADING, LOAD_SUCCESS, LOAD_FAILED } from './contants';
+import { TO_START_LOADING, START_LOADING, LOAD_SUCCESS, LOAD_FAILED } from './constants';
+
+export function toStartLoad(page: number) {
+  return {
+    type: TO_START_LOADING,
+    page,
+  };
+}
 
 export function startLoad() {
   return {

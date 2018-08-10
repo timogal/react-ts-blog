@@ -8,7 +8,7 @@ import { Helmet } from 'react-helmet';
 
 import Share from 'components/Share';
 import { BASE_URL } from 'utils/env';
-import resolveImage from 'utils/resolve-image';
+import resolveImage from 'utils/resolveImage';
 
 import { makeSelectDetail } from './selectors';
 
@@ -61,10 +61,10 @@ class DetailPage extends React.Component<DetailProps, any> {
         <ul className={styles.meta}>
           <li>
             <Icon type="calendar" className={styles.icon} />
-            {moment(detail.gmtCreated).format('YYYY-MM-DD')}
+            发布于：{moment(detail.gmtCreated).format('YYYY-MM-DD')}
           </li>
           <li>
-            <Icon type="eye" className={styles.icon} /> {detail.views}
+            <Icon type="eye" className={styles.icon} /> {detail.views}次查看
           </li>
           <li>
             <Icon type="folder" className={styles.icon} />
@@ -85,6 +85,13 @@ class DetailPage extends React.Component<DetailProps, any> {
           className={styles.article}
           dangerouslySetInnerHTML={{ __html: detail.content }}
         />
+        <div className={styles.license}>
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+            <img alt="知识共享许可协议" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+          </a>
+          <br />
+          本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可。
+        </div>
         <Share
           className={styles.share}
           title={detail.title}

@@ -1,16 +1,21 @@
 import * as React from 'react';
-import { Row, Col, Card } from 'antd';
+import { Row, Col } from 'antd';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
 import Main from 'components/Main';
 import ArticleItem from 'components/ArticleItem';
 import Loading from 'components/Loading';
 
+import injectSaga from 'utils/injectSaga';
+
 import FriendLinks from '../FriendLinks';
 
+import { toStartLoad } from './actions';
 import { makeSelectTotalPages, makeSelectPage, makeSelectLoading, makeSelectItems } from './selectors';
+import saga from './saga';
 
 import * as styles from './Index.scss';
 
@@ -19,10 +24,18 @@ interface IndexPageProps {
   loading: boolean,
   totalPages: number | null,
   items: any[],
-  dispatch: Dispatch
+  startLoading: (page: number) => any
 }
 
 class IndexPage extends React.Component<IndexPageProps, any> {
+  async componentDidMount() {
+    const { totalPages, page, startLoading } = this.props;
+    if (totalPages === null) {
+      // spa路由
+      startLoading(page);
+    }
+  }
+
   render() {
     const { loading, items } = this.props;
     return (
@@ -72,6 +85,15 @@ const mapStateToProps = createStructuredSelector({
   items: makeSelectItems(),
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({ dispatch });
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  startLoading(page: number) {
+    dispatch(toStartLoad(page));
+  }
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(IndexPage);
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+const withSaga = injectSaga({ key: 'indexPage', saga });
+
+export default compose(
+  withConnect,
+)(IndexPage);
