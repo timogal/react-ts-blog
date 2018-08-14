@@ -7,7 +7,7 @@
         "NODE_ENV": "production",
         "PORT": "9000"
       },
-      "node_args": "--project tsconfig.server.json"
+      "node_args":"'--project tsconfig.server.json'"
     }
   ]
 }

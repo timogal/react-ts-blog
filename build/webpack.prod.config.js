@@ -75,9 +75,12 @@ module.exports = mergeConfig({
       name: 'manifest'
     },
     splitChunks: {
-      name: 'vendor',
+      name: 'vendors',
       chunks: 'all',
       cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/
+        },
         styles: {
           name: 'styles',
           test: /\.css$/,

@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Icon, Breadcrumb } from 'antd';
 import * as cx from 'classnames';
 import { Link } from 'react-router-dom';
-import * as moment from 'moment';
 import LazyLoad from 'react-lazyload';
 
 import resolveImage from 'utils/resolveImage';
+import { toDateString } from 'utils/DateUtils';
 
 import * as styles from './ArticleItem.scss';
 
@@ -87,7 +87,7 @@ class ArticleItem extends React.Component<Props, any> {
               {views}
             </span>
             <span>
-              <Icon className={styles.icon} type="calendar" /> {moment(gmtCreated).format('YYYY-MM-DD')}
+              <Icon className={styles.icon} type="calendar" /> {toDateString(gmtCreated)}
             </span>
           </div>
         </div>

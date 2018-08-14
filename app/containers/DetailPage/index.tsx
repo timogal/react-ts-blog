@@ -3,12 +3,12 @@ import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { Breadcrumb, Icon } from 'antd';
 import { Link } from 'react-router-dom';
-import * as moment from 'moment';
 import { Helmet } from 'react-helmet';
 
 import Share from 'components/Share';
 import { BASE_URL } from 'utils/env';
 import resolveImage from 'utils/resolveImage';
+import { toDateString } from 'utils/DateUtils';
 
 import { makeSelectDetail } from './selectors';
 
@@ -61,7 +61,7 @@ class DetailPage extends React.Component<DetailProps, any> {
         <ul className={styles.meta}>
           <li>
             <Icon type="calendar" className={styles.icon} />
-            发布于：{moment(detail.gmtCreated).format('YYYY-MM-DD')}
+            发布于：{toDateString(detail.gmtCreated)}
           </li>
           <li>
             <Icon type="eye" className={styles.icon} /> {detail.views}次查看
