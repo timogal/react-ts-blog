@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as hoistNonReactStatics from 'hoist-non-react-statics';
+import * as PropTypes from 'prop-types';
 
 import { EnhancedStore } from 'types/index';
 import { MODE } from './constants';
@@ -22,6 +23,10 @@ export default function injectSaga({ key, saga, mode }: SagaInjectOptions) {
       static WrappedComponent = WrappedComponent;
 
       static displayName = `withSaga(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
+
+      static contextTypes = {
+        store: PropTypes.object.isRequired
+      };
 
       context: InjectSagaContext;
 

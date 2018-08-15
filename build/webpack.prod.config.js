@@ -1,10 +1,13 @@
-const mergeConfig = require('./webpack.base.config');
-const { lessLoader, sassLoader } = require('./less.config');
-
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyjsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin');
+
+const QiniuWebpackPlugin = require('./plugins/QiniuPlugin');
+
+const mergeConfig = require('./webpack.base.config');
+const { lessLoader, sassLoader } = require('./less.config');
+const { accessKey, secretKey, bucket, publicPath } = require('./qiniu.config');
 
 module.exports = mergeConfig({
   mode: 'production',
@@ -14,7 +17,7 @@ module.exports = mergeConfig({
   output: {
     chunkFilename: '[name].[chunkhash].bundle.js',
     filename: '[name].[chunkhash].js',
-    publicPath: '/'
+    publicPath,
   },
   module: {
     rules: [
@@ -54,6 +57,15 @@ module.exports = mergeConfig({
       inject: true,
       template: 'app/index.html',
       filename: '../server/template/index.html'
+    }),
+    new QiniuWebpackPlugin({
+      useHttpsDomain: true,
+      useCdnDomain: true,
+      zone: QiniuWebpackPlugin.zones.SOUTH,
+      exclude: /\.(html|txt|ico)$/,
+      accessKey,
+      secretKey,
+      bucket
     })
   ],
   optimization: {
@@ -79,7 +91,9 @@ module.exports = mergeConfig({
       chunks: 'all',
       cacheGroups: {
         vendors: {
-          test: /[\\/]node_modules[\\/]/
+          // 包含node_modules,排除highlight.js
+          // 反向断言
+          test: /^(?!.*[\\/]node_modules[\\/](?:highlight\.js)).*[\\/]node_modules[\\/].*/
         },
         styles: {
           name: 'styles',

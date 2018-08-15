@@ -52,6 +52,29 @@ declare module 'hoist-non-react-statics' {
   export = hoistNonReactStatics;
 }
 
+declare module 'lodash/isString' {
+  interface LodashIsStringStatic {
+    (value: any): value is string
+  }
+
+  const isString: LodashIsStringStatic;
+
+  export = isString;
+}
+
+declare module 'lodash/isEmpty' {
+  interface LodashIsEmptyStatic {
+    (value: any): boolean
+  }
+
+  const isEmpty: LodashIsEmptyStatic;
+
+  export = isEmpty;
+}
+
+declare module 'github-markdown-css' {
+}
+
 declare module '*.png' {
   const pngPath: string;
 

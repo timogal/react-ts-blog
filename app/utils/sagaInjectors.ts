@@ -1,4 +1,5 @@
-import * as _ from 'lodash';
+import * as isString from 'lodash/isString';
+import * as isEmpty from 'lodash/isEmpty';
 import * as invariant from 'invariant';
 
 import { isProd } from './env';
@@ -13,7 +14,7 @@ interface Descriptor {
 
 const checkKey = (key: any) => {
   invariant(
-    _.isString(key) && !_.isEmpty(key),
+    isString(key) && !isEmpty(key),
     '(app/utils...) injectSaga: Expected `key` to be a non empty string'
   )
 };
@@ -58,7 +59,7 @@ export function ejectSagaFactory(store: EnhancedStore) {
         // Clean up in production; in development we need `descriptor.saga` for hot reloading
         if (isProd) {
           // Need some value to be able to detect `ONCE_TILL_UNMOUNT` sagas in `injectSaga`
-          store.injectedSagas[key] = 'done'; // eslint-disable-line no-param-reassign
+          store.injectedSagas[key] = 'done';
         }
       }
     }

@@ -1,6 +1,6 @@
 @import "../../styles/variables";
 
-$detail-width: 720px;
+$detail-width: 840px;
 $content-font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 
 .wrapper {
@@ -36,6 +36,7 @@ $content-font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 
     a {
       color: $text-color;
+      text-decoration: underline;
     }
   }
 }
@@ -68,10 +69,6 @@ $content-font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
     margin: $padding-lg 0;
   }
 
-  a {
-    text-decoration: underline;
-  }
-
   ol, ul {
     padding-left: 40px;
     margin: 1em 0;
@@ -79,6 +76,10 @@ $content-font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 
   ol {
     list-style: decimal;
+  }
+
+  ul {
+    list-style: disc;
   }
 }
 

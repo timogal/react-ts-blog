@@ -65,6 +65,7 @@ class ArticleItem extends React.Component<Props, any> {
             <a href={`/p/${pid}`}>{title}</a>
           </h2>
           <Breadcrumb separator="|" className={styles.categories}>
+            <Icon type="folder" className={styles.icon} />
             {
               categories && categories.map(item => (
                 <BreadItem key={item.id}>

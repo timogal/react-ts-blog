@@ -95,5 +95,6 @@ const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const withSaga = injectSaga({ key: 'indexPage', saga });
 
 export default compose(
+  withSaga,
   withConnect,
 )(IndexPage);

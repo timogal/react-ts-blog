@@ -1,0 +1,17 @@
+@import "../../styles/variables";
+
+.not-found {
+  text-align: center;
+
+  .title {
+    margin: 24px 0;
+  }
+
+  .tips {
+    margin-top: 24px;
+
+    a {
+      color: $text-color-secondary;
+    }
+  }
+}

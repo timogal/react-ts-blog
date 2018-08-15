@@ -22,6 +22,15 @@
   color: $text-color;
   font-weight: 600;
   margin-bottom: 12px;
+
+  .icon {
+    font-size: $font-size-lg;
+    margin-right: .5em;
+  }
+
+  .icon, > span {
+    vertical-align: middle;
+  }
 }
 
 .content {
@@ -69,7 +78,7 @@
   .background {
     float: left;
     width: 160px;
-    height: 120px;
+    height: 140px;
 
     img {
       object-fit: cover;

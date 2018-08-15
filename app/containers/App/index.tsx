@@ -6,6 +6,7 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 import Sidebar from 'components/Sidebar';
 import AboutPage from 'containers/About/async';
+import NotFound from 'containers/NotFound';
 
 import ssrRoutes from '../../ssrRoutes';
 
@@ -24,6 +25,7 @@ export default function App() {
             ))
           }
           <Route path="/about" component={AboutPage} />
+          <Route component={NotFound} />
         </Switch>
       </main>
       <Footer />

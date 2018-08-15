@@ -41,8 +41,6 @@ async function clientRoute(
 
   const store = configureStore(initialState, history);
 
-  console.log('store.injectedSagas', store.injectedSagas);
-
   const tasks: any[] = [];
 
   ssrRoutes.forEach(route => {

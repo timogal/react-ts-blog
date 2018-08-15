@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Breadcrumb, Icon } from 'antd';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import * as cx from 'classnames';
 
 import Share from 'components/Share';
 import { BASE_URL } from 'utils/env';
@@ -12,6 +13,7 @@ import { toDateString } from 'utils/DateUtils';
 
 import { makeSelectDetail } from './selectors';
 
+import 'github-markdown-css/github-markdown.css';
 import 'highlight.js/styles/github.css';
 import * as styles from './detail.scss';
 
@@ -82,7 +84,7 @@ class DetailPage extends React.Component<DetailProps, any> {
         </ul>
         <article
           ref={(instance) => this.htmlContainer = instance}
-          className={styles.article}
+          className={cx('markdown-body', styles.article)}
           dangerouslySetInnerHTML={{ __html: detail.content }}
         />
         <div className={styles.license}>

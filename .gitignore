@@ -4,3 +4,4 @@ yarn-error.log
 .idea
 server/template/*.html
 .awcache
+qiniu.config.js
