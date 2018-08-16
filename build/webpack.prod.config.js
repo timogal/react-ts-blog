@@ -8,9 +8,9 @@ const QiniuWebpackPlugin = require('./plugins/QiniuPlugin');
 
 const mergeConfig = require('./webpack.base.config');
 const { lessLoader, sassLoader } = require('./less.config');
-// const { accessKey, secretKey, bucket, publicPath } = require('./qiniu.config');
+const { accessKey, secretKey, bucket, publicPath } = require('./qiniu.config');
 
-const publicPath = '/';
+// const publicPath = '/';
 
 module.exports = mergeConfig({
   mode: 'production',
@@ -62,7 +62,7 @@ module.exports = mergeConfig({
       template: 'app/index.html',
       filename: '../template/index.html'
     }),
-    /*new QiniuWebpackPlugin({
+    new QiniuWebpackPlugin({
       useHttpsDomain: true,
       useCdnDomain: true,
       zone: QiniuWebpackPlugin.zones.SOUTH,
@@ -70,7 +70,7 @@ module.exports = mergeConfig({
       accessKey,
       secretKey,
       bucket
-    })*/
+    })
   ],
   optimization: {
     noEmitOnErrors: true,
