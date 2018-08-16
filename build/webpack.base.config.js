@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const path = require('path');
 const { CheckerPlugin } = require('awesome-typescript-loader');
 const { lessPlugin } = require('./less.config');

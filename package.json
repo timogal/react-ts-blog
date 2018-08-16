@@ -9,7 +9,6 @@
     "@types/ejs": "^2.6.0",
     "@types/express": "^4.11.1",
     "@types/highlight.js": "^9.12.3",
-    "@types/node": "^9.6.6",
     "@types/prop-types": "^15.5.5",
     "@types/qs": "^6.5.1",
     "@types/react": "^16.3.12",
@@ -96,14 +95,19 @@
     "redux-saga": "^0.16.0",
     "reselect": "^3.0.1"
   },
+  "peerDependencies": {
+    "@types/node": "9.6.7"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development ts-node -P tsconfig.server.json server",
     "clean": "rimraf dist/*",
     "prebuild": "npm run clean",
-    "build": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig.server.json\" webpack --config build/webpack.prod.config.js",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.prod.config.js",
+    "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.server.config.js -p",
     "analyzer": "webpack-bundle-analyzer stats.json dist",
     "prestart": "npm run build",
-    "start": "cross-env NODE_ENV=production ts-node -P tsconfig.server.json server"
+    "start": "node dist/server"
   },
   "_moduleDirectories": [
     "node_modules",

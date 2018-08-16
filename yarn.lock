@@ -83,10 +83,6 @@
   version "9.6.6"
   resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-9.6.6.tgz#439b91f9caf3983cad2eef1e11f6bedcbf9431d2"
 
-"@types/node@^9.6.6":
-  version "9.6.26"
-  resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-9.6.26.tgz#cd9d021f3e43f16a62e1b1cfa38b00ae4cfbebac"
-
 "@types/prop-types@^15.5.5":
   version "15.5.5"
   resolved "http://registry.npm.taobao.org/@types/prop-types/download/@types/prop-types-15.5.5.tgz#17038dd322c2325f5da650a94d5f9974943625e3"

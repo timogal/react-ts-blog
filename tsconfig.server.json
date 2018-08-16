@@ -1,18 +1,18 @@
 {
   "compilerOptions": {
+    "module": "commonjs",
     "target": "esnext",
     "jsx": "react",
     "allowJs": true,
     "moduleResolution": "node",
-    "lib": [
-      "es2015",
-      "dom",
-      "es6"
-    ],
     "outDir": "dist",
     "rootDirs": [
       "server",
       "app"
+    ],
+    "lib": [
+      "es6",
+      "dom"
     ],
     "baseUrl": ".",
     "paths": {
