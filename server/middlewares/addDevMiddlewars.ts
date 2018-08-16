@@ -15,6 +15,7 @@ function createWebpackMiddleware(compiler: webpack.Compiler, publicPath: string)
 }
 
 function setup(app: express.Application) {
+
   const compiler = webpack(webpackConfig as webpack.Configuration);
 
   compiler.hooks.emit.tap('html-emit', function (compilation) {

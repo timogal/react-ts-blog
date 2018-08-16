@@ -26,10 +26,12 @@
   .icon {
     font-size: $font-size-lg;
     margin-right: .5em;
+    padding-top: 2px;
   }
 
-  .icon, > span {
+  .icon, .breadcrumb {
     vertical-align: middle;
+    display: inline-block;
   }
 }
 

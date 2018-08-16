@@ -64,16 +64,19 @@ class ArticleItem extends React.Component<Props, any> {
           <h2 className={styles.title}>
             <a href={`/p/${pid}`}>{title}</a>
           </h2>
-          <Breadcrumb separator="|" className={styles.categories}>
+          <div className={styles.categories}>
             <Icon type="folder" className={styles.icon} />
-            {
-              categories && categories.map(item => (
-                <BreadItem key={item.id}>
-                  <Link to={`/category/${item.id}`}>{item.name}</Link>
-                </BreadItem>
-              ))
-            }
-          </Breadcrumb>
+            <Breadcrumb separator="|" className={styles.breadcrumb}>
+              {
+                categories && categories.map(item => (
+                  <BreadItem key={item.id}>
+                    <Link to={`/category/${item.id}`}>{item.name}</Link>
+                  </BreadItem>
+                ))
+              }
+            </Breadcrumb>
+          </div>
+
           <div className={styles.content}>{content}</div>
           <div className={styles.meta}>
             {
