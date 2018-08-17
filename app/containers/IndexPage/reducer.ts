@@ -8,6 +8,7 @@ const initialState = fromJS({
   items: [],
   page: 1,
   totalPages: null,
+  total: 0,
 });
 
 export default function (state = initialState, action: AnyAction) {
@@ -19,17 +20,13 @@ export default function (state = initialState, action: AnyAction) {
       return state
         .set('loading', false);
     case LOAD_SUCCESS:
-      const { totalPages, page, items } = action.data;
+      const { totalPages, page, items, total } = action.data;
       return state
         .set('loading', false)
         .set('totalPages', totalPages)
+        .set('total', total)
         .set('page', page)
-        .update('items', (values: List<any>) => {
-          items.forEach((item: any) => {
-            values = values.push(fromJS(item));
-          });
-          return values;
-        });
+        .set('items', fromJS(items));
     default:
       return state;
   }

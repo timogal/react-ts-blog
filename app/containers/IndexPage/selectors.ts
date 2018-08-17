@@ -16,6 +16,13 @@ const makeSelectTotalPages = () => createSelector(
   }
 );
 
+const makeSelectTotal = () => createSelector(
+  selectIndex,
+  (state: any) => {
+    return state.get('total');
+  }
+);
+
 const makeSelectItems = () => createSelector(
   selectIndex,
   (state: any) => {
@@ -35,5 +42,6 @@ export {
   makeSelectLoading,
   makeSelectPage,
   makeSelectTotalPages,
+  makeSelectTotal,
   selectIndex
 };

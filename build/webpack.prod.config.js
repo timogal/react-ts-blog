@@ -3,14 +3,15 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyjsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
 
 const QiniuWebpackPlugin = require('./plugins/QiniuPlugin');
 
 const mergeConfig = require('./webpack.base.config');
 const { lessLoader, sassLoader } = require('./less.config');
-const { accessKey, secretKey, bucket, publicPath } = require('./qiniu.config');
+// const { accessKey, secretKey, bucket, publicPath } = require('./qiniu.config');
 
-// const publicPath = '/';
+const publicPath = '/';
 
 module.exports = mergeConfig({
   mode: 'production',
@@ -60,9 +61,25 @@ module.exports = mergeConfig({
     new HtmlWebpackPlugin({
       inject: true,
       template: 'app/index.html',
-      filename: '../template/index.html'
+      filename: '../template/index.html',
+      minify: {
+        collapseWhitespace: true,
+        minifyJS: true,
+        removeComments: true,
+      },
     }),
-    new QiniuWebpackPlugin({
+    new OfflinePlugin({
+      relativePaths: false,
+      appShell: '/',
+      excludes: ['robots.txt'],
+      caches: {
+        main: [':rest:'],
+        additional: ['*.bundle.js']
+      },
+      safeToUseOptionalCaches: true,
+      publicPath,
+    }),
+    /*new QiniuWebpackPlugin({
       useHttpsDomain: true,
       useCdnDomain: true,
       zone: QiniuWebpackPlugin.zones.SOUTH,
@@ -70,7 +87,7 @@ module.exports = mergeConfig({
       accessKey,
       secretKey,
       bucket
-    })
+    })*/
   ],
   optimization: {
     noEmitOnErrors: true,

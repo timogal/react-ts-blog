@@ -4,13 +4,17 @@ import { ConnectedRouter } from 'connected-react-router/immutable';
 import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
 import * as  Loadable from 'react-loadable';
+import * as OfflinePlugin from 'offline-plugin/runtime';
 import 'babel-polyfill';
 
 import 'assets/favicon.ico';
 import 'assets/robots.txt';
 
+import { isProd } from 'utils/env';
+
 import App from './containers/App';
 import configureStore from './configureStore';
+import loadAnalyzer from './analyzer';
 
 const history = createBrowserHistory();
 
@@ -30,3 +34,9 @@ Loadable.preloadReady().then(() => {
     document.getElementById('root') as HTMLElement
   );
 });
+
+if (isProd) {
+  OfflinePlugin.install();
+  loadAnalyzer();
+}
+

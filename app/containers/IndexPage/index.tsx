@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Row, Col } from 'antd';
+import { Row, Col, Pagination } from 'antd';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -12,9 +12,16 @@ import Loading from 'components/Loading';
 import injectSaga from 'utils/injectSaga';
 
 import FriendLinks from '../FriendLinks';
+import TimelineCard from '../TimelineCard';
 
 import { toStartLoad } from './actions';
-import { makeSelectTotalPages, makeSelectPage, makeSelectLoading, makeSelectItems } from './selectors';
+import {
+  makeSelectTotalPages,
+  makeSelectPage,
+  makeSelectLoading,
+  makeSelectItems,
+  makeSelectTotal
+} from './selectors';
 import saga from './saga';
 
 import * as styles from './Index.scss';
@@ -24,6 +31,7 @@ interface IndexPageProps {
   loading: boolean,
   totalPages: number | null,
   items: any[],
+  total: number,
   startLoading: (page: number) => any
 }
 
@@ -36,8 +44,27 @@ class IndexPage extends React.Component<IndexPageProps, any> {
     }
   }
 
+  onPageChange = (page: number) => {
+    const { startLoading, loading } = this.props;
+    if (loading) {
+      return;
+    }
+    startLoading(page);
+  };
+
+  renderLoading() {
+    const { loading, items, totalPages, page, total } = this.props;
+    if (!loading) {
+      return null;
+    }
+    if (totalPages !== null) {
+      return <div className={styles.loadingWrap} />;
+    }
+    return <Loading />;
+  }
+
   render() {
-    const { loading, items } = this.props;
+    const { items, totalPages, page, total } = this.props;
     return (
       <Main className={styles.root}>
         <Row gutter={24}>
@@ -54,23 +81,22 @@ class IndexPage extends React.Component<IndexPageProps, any> {
                 </div>
               ))
             }
+            {this.renderLoading()}
             {
-              loading && <Loading />
+              totalPages !== null && totalPages > 0 && (
+                <Pagination
+                  className={styles.pagination}
+                  current={page}
+                  total={total}
+                  pageSize={10}
+                  onChange={this.onPageChange}
+                />
+              )
             }
           </Col>
           <Col span={8}>
+            <TimelineCard />
             <FriendLinks />
-            {/*<Card title="最新文章" className={styles.panel}>
-              <ul className={styles.friendLinks}>
-                {
-                  newestPosts.map(item => (
-                    <li key={item.pid}>
-                      <a href={`/p/${item.pid}`}>{item.title}</a>
-                    </li>
-                  ))
-                }
-              </ul>
-            </Card>*/}
           </Col>
         </Row>
       </Main>
@@ -83,6 +109,7 @@ const mapStateToProps = createStructuredSelector({
   loading: makeSelectLoading(),
   totalPages: makeSelectTotalPages(),
   items: makeSelectItems(),
+  total: makeSelectTotal(),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
