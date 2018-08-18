@@ -1,0 +1,26 @@
+@import "../../styles/variables";
+
+$content-width: 720px;
+
+.title {
+  margin-bottom: $padding-lg;
+
+  small {
+    color: $text-color-secondary;
+    font-size: $font-size-base;
+    padding-left: 1em;
+    display: inline-block;
+    transform: translateY(-2px);
+  }
+}
+
+.content {
+  max-width: $content-width;
+  margin-top: 36px;
+}
+
+.item {
+  border-bottom: solid 1px #eee;
+  margin-bottom: $padding-lg;
+  padding-bottom: 12px;
+}

@@ -1,0 +1,50 @@
+@import "../../styles/variables";
+
+.root {
+  margin-top: 50px;
+  padding: 0 36px;
+  position: relative;
+
+  :global {
+    .ant-timeline-item-content {
+      padding-left: 12px;
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .ant-timeline-item:last-child .ant-timeline-item-tail {
+      visibility: hidden;
+    }
+  }
+}
+
+.timeline {
+  margin-bottom: $padding-lg;
+}
+
+.loading-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, .3);
+}
+
+.time-tag {
+  :global {
+    .ant-timeline-item-head {
+      margin-top: 6px;
+    }
+  }
+
+  .time {
+    font-size: $font-size-lg + 4px;
+
+    a {
+      color: inherit;
+    }
+  }
+}

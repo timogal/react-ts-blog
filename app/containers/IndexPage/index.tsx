@@ -53,7 +53,7 @@ class IndexPage extends React.Component<IndexPageProps, any> {
   };
 
   renderLoading() {
-    const { loading, items, totalPages, page, total } = this.props;
+    const { loading, totalPages } = this.props;
     if (!loading) {
       return null;
     }

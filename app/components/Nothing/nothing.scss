@@ -1,0 +1,24 @@
+.bg {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  background: url("components/Nothing/nothing.jpg") no-repeat center;
+  background-size: cover;
+  text-align: center;
+  position: relative;
+
+  &:before {
+    padding-top: percentage(0.7578125);
+    display: block;
+    content: '';
+  }
+
+  .text {
+    color: #fff;
+    position: absolute;
+    margin: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-5deg);
+  }
+}
