@@ -13,8 +13,9 @@ import injectSaga from 'utils/injectSaga';
 
 import FriendLinks from '../FriendLinks';
 import TimelineCard from '../TimelineCard';
+import DailySentence from '../DailySentence';
 
-import { toStartLoad } from './actions';
+import { toStartLoad, startLoadSentence } from './actions';
 import {
   makeSelectTotalPages,
   makeSelectPage,
@@ -95,6 +96,7 @@ class IndexPage extends React.Component<IndexPageProps, any> {
             }
           </Col>
           <Col span={8}>
+            <DailySentence />
             <TimelineCard />
             <FriendLinks />
           </Col>
@@ -115,6 +117,7 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   startLoading(page: number) {
     dispatch(toStartLoad(page));
+    dispatch(startLoadSentence());
   }
 });
 

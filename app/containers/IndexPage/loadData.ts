@@ -1,10 +1,11 @@
 import { LoadData } from 'types/index';
-import { loadArticles } from './saga';
+import { loadArticles, getDailySentence } from './saga';
 
 const loadData: LoadData = async (store) => {
   const page = store.getState().get('indexPage').get('page');
-  const task = store.runSaga(loadArticles, { page });
-  return task.done;
+  const articleTask = store.runSaga(loadArticles, { page });
+  const sentenceTask = store.runSaga(getDailySentence);
+  return Promise.all([articleTask.done, sentenceTask.done]);
 };
 
 export default loadData;

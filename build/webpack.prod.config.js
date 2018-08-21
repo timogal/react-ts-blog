@@ -114,7 +114,7 @@ module.exports = mergeConfig({
         vendors: {
           // 包含node_modules,排除highlight.js
           // 反向断言
-          test: /^(?!.*[\\/]node_modules[\\/](?:highlight\.js)).*[\\/]node_modules[\\/].*/
+          test: /^(?!.*[\\/]node_modules[\\/](?:highlight\.js|wordcloud)).*[\\/]node_modules[\\/].*/
         },
         styles: {
           name: 'styles',

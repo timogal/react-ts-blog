@@ -1,13 +1,18 @@
 import { Action } from 'redux';
 import { call, put, takeLatest } from 'redux-saga/effects';
 
-import Api from 'utils/Api';
+import Api, { loadDailySentence } from 'utils/Api';
 
-import { startLoad, loadSuccess, loadFailed } from './actions';
-import { TO_START_LOADING } from './constants';
+import { startLoad, loadSuccess, loadFailed, loadSentenceSuccess } from './actions';
+import { TO_START_LOADING, START_LOAD_SENTENCE } from './constants';
 
 interface PageAction extends Action<string> {
   page: number
+}
+
+export function* getDailySentence() {
+  const data = yield call(loadDailySentence);
+  yield put(loadSentenceSuccess(data));
 }
 
 export function* loadArticles(action: PageAction) {
@@ -21,5 +26,6 @@ export function* loadArticles(action: PageAction) {
 }
 
 export default function* rootSaga() {
+  yield takeLatest(START_LOAD_SENTENCE, getDailySentence);
   yield takeLatest(TO_START_LOADING, loadArticles);
 }

@@ -37,11 +37,23 @@ const makeSelectLoading = () => createSelector(
   }
 );
 
+const makeSelectSentence = () => createSelector(
+  selectIndex,
+  (state) => {
+    const sentence = state.get('sentence');
+    if (sentence) {
+      return sentence.toJS();
+    }
+    return null;
+  }
+);
+
 export {
+  selectIndex,
   makeSelectItems,
   makeSelectLoading,
   makeSelectPage,
   makeSelectTotalPages,
   makeSelectTotal,
-  selectIndex
+  makeSelectSentence,
 };

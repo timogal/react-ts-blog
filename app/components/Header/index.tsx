@@ -25,7 +25,6 @@ class Header extends React.Component<any, any> {
                 <li><Link to="/archives">归档</Link></li>
                 <li><Link to="/categories">分类</Link></li>
                 <li><Link to="/tags">标签</Link></li>
-                <li><Link to="/about">关于</Link></li>
               </ul>
             </Main>
             <div className={styles.search}>

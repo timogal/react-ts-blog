@@ -1,7 +1,7 @@
 import { fromJS, List } from 'immutable';
 import { AnyAction } from 'redux';
 
-import { START_LOADING, LOAD_FAILED, LOAD_SUCCESS } from './constants';
+import { START_LOADING, LOAD_FAILED, LOAD_SUCCESS, LOAD_SENTENCE_SUCCESS } from './constants';
 
 const initialState = fromJS({
   loading: false,
@@ -9,6 +9,7 @@ const initialState = fromJS({
   page: 1,
   totalPages: null,
   total: 0,
+  sentence: null,
 });
 
 export default function (state = initialState, action: AnyAction) {
@@ -27,6 +28,9 @@ export default function (state = initialState, action: AnyAction) {
         .set('total', total)
         .set('page', page)
         .set('items', fromJS(items));
+    case LOAD_SENTENCE_SUCCESS:
+      return state
+        .set('sentence', fromJS(action.data));
     default:
       return state;
   }

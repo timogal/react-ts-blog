@@ -1,10 +1,12 @@
 User-agent: Baiduspider
-Allow: /p/
-Disallow: /about
+Disallow: /categories
+Disallow: /tags
+Disallow: /archives
 
 User-agent: Googlebot
-Allow: /p/
-Disallow: /about
+Disallow: /categories
+Disallow: /tags
+Disallow: /archives
 
 User-agent: *
 Disallow: /

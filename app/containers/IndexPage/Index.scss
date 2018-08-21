@@ -52,3 +52,16 @@
   bottom: 0;
   background-color: rgba(255, 255, 255, .3);
 }
+
+.source {
+  color: $text-color-secondary;
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: $primary-color;
+  }
+}
