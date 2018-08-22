@@ -30,6 +30,9 @@
       ],
       "utils/*": [
         "app/utils/*"
+      ],
+      "selectors/*": [
+        "app/selectors/*"
       ]
     },
     "noImplicitReturns": true,

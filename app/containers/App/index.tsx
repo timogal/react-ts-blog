@@ -5,9 +5,10 @@ import { Helmet } from 'react-helmet';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import Sidebar from 'components/Sidebar';
-import AboutPage from 'containers/About/async';
 import MonthlyArchive from 'containers/MonthlyArchive/async';
+import Search from 'containers/Search/async';
 import TagCloud from 'containers/TagCloud';
+import CategoryPage from 'containers/CategoryPage';
 import NotFound from 'containers/NotFound';
 
 import ssrRoutes from '../../ssrRoutes';
@@ -28,7 +29,8 @@ export default function App() {
           }
           <Route path="/archives/:date(\d{4}-\d{2})" component={MonthlyArchive} />
           <Route path="/tags" component={TagCloud} />
-          <Route path="/about" component={AboutPage} />
+          <Route path="/categories" component={CategoryPage} />
+          <Route path="/search" component={Search} />
           <Route component={NotFound} />
         </Switch>
       </main>

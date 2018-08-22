@@ -65,7 +65,7 @@ class TagCloud extends React.Component<Props, TagCloudState> {
     return (
       <Main withTopMargin>
         <h1 className={styles.title}>标签</h1>
-        <div>目前共{tags.length}个标签</div>
+        <div className={styles.total}>目前共{tags.length}个标签</div>
         {loading && <Loading />}
         {
           !loading && tags.length === 0 && <Nothing />
@@ -79,7 +79,7 @@ class TagCloud extends React.Component<Props, TagCloudState> {
                     className={styles.tag} key={id}
                     style={{ fontSize: `${fontSizeBase * rate}px`, color: toHexColor(rate) }}
                   >
-                    <Link to={`/tags/${id}`}>{name}</Link>
+                    <Link to={`/search?tag=${id}`}>{name}</Link>
                   </li>
                 ))
               }

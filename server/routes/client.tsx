@@ -53,7 +53,7 @@ async function clientRoute(
   try {
     await Promise.all(tasks);
   } catch (e) {
-    return next(e);
+    console.warn('Process SSR failed:' + e.message);
   }
 
   const context = {};

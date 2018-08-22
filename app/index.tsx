@@ -4,7 +4,6 @@ import { ConnectedRouter } from 'connected-react-router/immutable';
 import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
 import * as  Loadable from 'react-loadable';
-import * as OfflinePlugin from 'offline-plugin/runtime';
 import 'babel-polyfill';
 
 import 'assets/favicon.ico';
@@ -36,7 +35,6 @@ Loadable.preloadReady().then(() => {
 });
 
 if (isProd) {
-  OfflinePlugin.install();
   loadAnalyzer();
 }
 

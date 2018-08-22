@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet';
 import * as cx from 'classnames';
 
 import Share from 'components/Share';
+import NotFound from '../NotFound';
 import { BASE_URL } from 'utils/env';
 import resolveImage from 'utils/resolveImage';
 import { toDateString } from 'utils/DateUtils';
@@ -54,7 +55,7 @@ class DetailPage extends React.Component<DetailProps, any> {
   render() {
     const { detail } = this.props;
     if (!detail) {
-      return null;
+      return <NotFound />;
     }
     return (
       <div className={styles.wrapper}>

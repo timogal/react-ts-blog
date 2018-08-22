@@ -2,11 +2,13 @@ User-agent: Baiduspider
 Disallow: /categories
 Disallow: /tags
 Disallow: /archives
+Disallow: /search
 
 User-agent: Googlebot
 Disallow: /categories
 Disallow: /tags
 Disallow: /archives
+Disallow: /search
 
 User-agent: *
 Disallow: /

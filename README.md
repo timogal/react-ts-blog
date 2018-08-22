@@ -10,10 +10,23 @@ typescript配置参照：[https://github.com/Microsoft/TypeScript-React-Starter]
 
 启动开发环境: `yarn dev`
 
+### 正式环境
+
+```
+npm start
+```
+
+使用[pm2](https://github.com/Unitech/pm2)
+
+```
+npm run build
+pm2 start process.json
+```
+
 ### 功能
 
 * [x]  Redux状态管理
-* [ ]  主体页面
+* [x]  主体页面
 * [x]  SSR - 服务端渲染
 * [ ]  响应式
 * [x]  Production Build
