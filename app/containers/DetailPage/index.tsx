@@ -76,7 +76,7 @@ class DetailPage extends React.Component<DetailProps, any> {
               {
                 detail.categories.map((item: any) => (
                   <BreadItem key={item.id}>
-                    <Link to={`/category/${item.id}`}>{item.name}</Link>
+                    <Link to={`/search?category=${item.id}`}>{item.name}</Link>
                   </BreadItem>
                 ))
               }

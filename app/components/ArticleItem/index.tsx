@@ -70,7 +70,7 @@ class ArticleItem extends React.Component<Props, any> {
               {
                 categories && categories.map(item => (
                   <BreadItem key={item.id}>
-                    <Link to={`/category/${item.id}`}>{item.name}</Link>
+                    <Link to={`/search?category=${item.id}`}>{item.name}</Link>
                   </BreadItem>
                 ))
               }
