@@ -1,8 +1,10 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 import Api from 'utils/Api';
 import Loading from "components/Loading";
 import Main from "components/Main";
+import Nothing from 'components/Nothing';
 
 import * as styles from './tag-cloud.scss';
 
@@ -11,48 +13,79 @@ interface Props {
 
 interface TagCloudState {
   loading: boolean
+  tags: any[]
+}
+
+const fontSizeBase = 40;
+
+function toHexColor(rate: number): string {
+  let num = Math.floor(51 / rate);
+  if (num > 0xEE) {
+    num = 0xEE;
+  }
+  const hex = num.toString(16);
+  return `#${hex}${hex}${hex}`;
 }
 
 class TagCloud extends React.Component<Props, TagCloudState> {
   async componentDidMount() {
-    let tags: any[];
     try {
       const { data } = await Api.get('/statistics/tags');
-      this.setState({ loading: false });
-      tags = data;
+      this.calculateBase(data);
+      this.setState({ loading: false, tags: data });
     } catch (e) {
       this.setState({ loading: false });
-      return;
     }
-    let d3Cloud = await import(/* webpackChunkName: "d3-cloud" */'d3-cloud');
-    const cloud = d3Cloud.default;
-    const layout = cloud();
-    const formattedTags = tags.map(({ id, name, total }) => ({
-      text: name,
-      size: total,
-    }));
-    layout
-      .words(formattedTags)
-      .canvas(() => this.cloudRoot!)
-      .size([1000, 1000])
-      .fontSize(14)
-      .rotate(0)
-      .spiral('archimedean')
-      .start();
   }
 
-  cloudRoot: HTMLElement | null;
-
-  state = {
-    loading: true
+  state: TagCloudState = {
+    loading: true,
+    tags: []
   };
 
+  calculateBase(tags: any[]) {
+    let max: number | null = null;
+    tags.forEach(item => {
+      if (max === null) {
+        max = item.total;
+      } else if (item.total > max) {
+        max = item.total;
+      }
+    });
+    if (!max) {
+      return;
+    }
+    tags.forEach(item => {
+      item.rate = item.total / max!;
+    });
+  }
+
   render() {
-    const { loading } = this.state;
+    const { loading, tags } = this.state;
     return (
-      <Main>
+      <Main withTopMargin>
+        <h1 className={styles.title}>标签</h1>
+        <div>目前共{tags.length}个标签</div>
         {loading && <Loading />}
-        <canvas height={500} width={500} ref={(ref) => this.cloudRoot = ref} />
+        {
+          !loading && tags.length === 0 && <Nothing />
+        }
+        {
+          tags.length > 0 && (
+            <ul className={styles.list}>
+              {
+                tags.map(({ id, name, rate }) => (
+                  <li
+                    className={styles.tag} key={id}
+                    style={{ fontSize: `${fontSizeBase * rate}px`, color: toHexColor(rate) }}
+                  >
+                    <Link to={`/tags/${id}`}>{name}</Link>
+                  </li>
+                ))
+              }
+            </ul>
+          )
+        }
       </Main>
     );
   }

@@ -76,7 +76,6 @@ class ArticleItem extends React.Component<Props, any> {
               }
             </Breadcrumb>
           </div>
-
           <div className={styles.content}>{content}</div>
           <div className={styles.meta}>
             {

@@ -1,4 +1,27 @@
-.cloud {
-  width: 500px;
-  height: 500px;
+@import "../../styles/variables";
+
+.root {
+  margin-top: 36px;
+}
+
+.title {
+  text-align: center;
+}
+
+.total {
+  font-size: $font-size-sm;
+}
+
+.list {
+  text-align: center;
+}
+
+.tag {
+  padding: 12px;
+  display: inline-block;
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+  }
 }
