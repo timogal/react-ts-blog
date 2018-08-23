@@ -7,10 +7,19 @@ export interface ScriptOptions {
 export default function loadScript(scriptUrl: string, options?: ScriptOptions): Promise<void> {
   options = options || {};
   return new Promise<void>((resolve, reject) => {
-    const script = document.createElement('script');
+    let script: HTMLScriptElement | null;
+    // 检查是否存在
+    if (options!.id) {
+      script = document.getElementById(options!.id!) as HTMLScriptElement;
+      if (script) {
+        resolve();
+        return;
+      }
+    }
+    script = document.createElement('script');
     script.src = scriptUrl;
     Object.keys(options as {}).forEach((key: string) => {
-      script.setAttribute(key, options![key]);
+      script!.setAttribute(key, options![key]);
     });
     script.async = true;
     script.onload = () => resolve();
