@@ -7871,6 +7871,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
+viewerjs@^1.2.0:
+  version "1.2.0"
+  resolved "http://registry.npm.taobao.org/viewerjs/download/viewerjs-1.2.0.tgz#22254b86e50898c7c7593891a1e36e6577eb8462"
+
 viewport-dimensions@^0.2.0:
   version "0.2.0"
   resolved "http://registry.npm.taobao.org/viewport-dimensions/download/viewport-dimensions-0.2.0.tgz#de740747db5387fd1725f5175e91bac76afdf36c"

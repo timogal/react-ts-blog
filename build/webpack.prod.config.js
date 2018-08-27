@@ -10,6 +10,8 @@ const mergeConfig = require('./webpack.base.config');
 const { lessLoader, sassLoader } = require('./less.config');
 const { accessKey, secretKey, bucket, publicPath } = require('./qiniu.config');
 
+// const publicPath = '/';
+
 module.exports = mergeConfig({
   mode: 'production',
   entry: {
@@ -73,7 +75,7 @@ module.exports = mergeConfig({
       accessKey,
       secretKey,
       bucket
-    })
+    }),
   ],
   optimization: {
     noEmitOnErrors: true,
@@ -100,7 +102,7 @@ module.exports = mergeConfig({
         vendors: {
           // 包含node_modules,排除highlight.js
           // 反向断言
-          test: /^(?!.*[\\/]node_modules[\\/](?:highlight\.js|d3-cloud)).*[\\/]node_modules[\\/].*/
+          test: /^(?!.*[\\/]node_modules[\\/](?:highlight\.js|viewerjs)).*[\\/]node_modules[\\/].*/
         },
         styles: {
           name: 'styles',

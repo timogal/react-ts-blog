@@ -15,6 +15,7 @@ import { toDateString } from 'utils/DateUtils';
 import { makeSelectDetail } from './selectors';
 
 import 'github-markdown-css/github-markdown.css';
+import 'viewerjs/dist/viewer.css';
 import 'highlight.js/styles/github.css';
 import * as styles from './detail.scss';
 
@@ -28,14 +29,22 @@ class DetailPage extends React.Component<DetailProps, any> {
   htmlContainer: HTMLElement | null;
 
   componentDidMount() {
-    import(/* webpackChunkName: "hljs" */'highlight.js').then(mod => {
-      const hljs = mod.default || mod;
+    Promise.all([
+      import(/* webpackChunkName: "hljs" */'highlight.js'),
+      import(/* webpackChunkName: "viewerjs" */'viewerjs'),
+    ]).then(([hljsMod, viewerMod]) => {
+      const hljs = hljsMod.default || hljsMod;
+      const Viewer = viewerMod.default || viewerMod;
       if (this.htmlContainer) {
         const preCode = this.htmlContainer.querySelectorAll('pre code');
         for (let index = 0, len = preCode.length; index < len; index++) {
           hljs.highlightBlock(preCode[index]);
         }
       }
+      new Viewer(this.htmlContainer!, {
+        toolbar: false,
+        title: false,
+      });
     })
   }
 
