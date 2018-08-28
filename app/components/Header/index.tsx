@@ -1,17 +1,21 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Input } from 'antd';
+import { Input, Icon } from 'antd';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router/immutable';
 import { createStructuredSelector } from 'reselect';
 import * as qs from 'qs';
+import * as cx from 'classnames';
 
 import { makeSelectLocation } from 'selectors/routerSelectors';
+import { makeSelectMenuOpen } from 'selectors/globalSelectors';
+import { openMenu } from '../../actions';
 
 import * as logo from 'assets/logo.png';
 
 import Main from '../Main';
+import ResponsiveMenuWrapper from './ResponsiveMenuWrapper';
 
 import * as styles from './Header.scss';
 
@@ -19,7 +23,9 @@ const SearchInput = Input.Search;
 
 interface HeaderProps {
   doSearch: (keyword: string) => void
+  openMenu: () => void
   location: { [K: string]: any }
+  menuOpen: boolean
 }
 
 interface HeaderState {
@@ -42,6 +48,15 @@ class Header extends React.Component<HeaderProps, HeaderState> {
 
   render() {
     const { keyword } = this.state;
+    const { menuOpen, openMenu } = this.props;
+    const menu = (
+      <ul className={styles.menu}>
+        <li><Link to="/">首页</Link></li>
+        <li><Link to="/archives">归档</Link></li>
+        <li><Link to="/categories">分类</Link></li>
+        <li><Link to="/tags">标签</Link></li>
+      </ul>
+    );
     return (
       <header className={styles.headerRoot}>
         <div className={styles.header}>
@@ -50,12 +65,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
               <Link to="/"><img src={logo} /></Link>
             </div>
             <Main className={styles.content}>
-              <ul className={styles.menu}>
-                <li><Link to="/">首页</Link></li>
-                <li><Link to="/archives">归档</Link></li>
-                <li><Link to="/categories">分类</Link></li>
-                <li><Link to="/tags">标签</Link></li>
-              </ul>
+              {menu}
             </Main>
             <div className={styles.search}>
               <SearchInput
@@ -67,8 +77,18 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                 onSearch={this.props.doSearch}
               />
             </div>
+            <Icon
+              type={'menu-unfold'}
+              className={cx(styles.menuBtn, { [styles.open]: menuOpen })}
+              onClick={openMenu}
+            />
           </div>
         </div>
+        <ResponsiveMenuWrapper>
+          <div className={styles.menuWrap}>
+            {menu}
+          </div>
+        </ResponsiveMenuWrapper>
       </header>
     );
   }
@@ -76,12 +96,16 @@ class Header extends React.Component<HeaderProps, HeaderState> {
 
 const mapStateToProps = createStructuredSelector({
   location: makeSelectLocation(),
+  menuOpen: makeSelectMenuOpen(),
 });
 
 function mapDispatchToProps(dispatch: Dispatch) {
   return {
     doSearch(keyword: string) {
       dispatch(push(`/search?keyword=${keyword}`));
+    },
+    openMenu() {
+      dispatch(openMenu());
     }
   };
 }
