@@ -133,7 +133,7 @@ declare module 'react-motion-drawer' {
     offset?: number
   }
 
-  export default class Drawer extends React.Component<any> {
+  export default class Drawer extends React.Component<DrawerProps> {
   }
 }
 
