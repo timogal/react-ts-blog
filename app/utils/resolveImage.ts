@@ -1,4 +1,5 @@
-import { IMAGE_BASE } from './env';
+import { IMAGE_BASE, IMAGE_OPTIMIZE_WEBP, IMAGE_OPTIMIZE } from './env';
+import { webpSupported } from './support';
 
 export default function resolveImage(url: string): string {
   if (!url) {
@@ -10,5 +11,5 @@ export default function resolveImage(url: string): string {
   if (url.indexOf('/') !== 0) {
     url = '/' + url;
   }
-  return `${IMAGE_BASE}${url}`;
+  return `${IMAGE_BASE}${url}?${webpSupported ? IMAGE_OPTIMIZE_WEBP : IMAGE_OPTIMIZE}`;
 }

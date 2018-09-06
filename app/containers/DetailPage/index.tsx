@@ -19,6 +19,8 @@ import 'viewerjs/dist/viewer.css';
 import 'highlight.js/styles/github.css';
 import * as styles from './detail.scss';
 
+import RichTextContainer from "./RichTextContainer";
+
 const BreadItem = Breadcrumb.Item;
 
 interface DetailProps {
@@ -53,10 +55,16 @@ class DetailPage extends React.Component<DetailProps, any> {
     if (!detail) {
       return null;
     }
+    const { tags } = detail;
+    let keywords: string | null = null;
+    if (tags && tags.length > 0) {
+      keywords = tags.map((item: any) => item.name).join(',');
+    }
     return (
       <Helmet>
         <title>{detail.title}</title>
         <meta name="description" content={detail.remark} />
+        {keywords && <meta name="keywords" content={keywords} />}
       </Helmet>
     );
   }
@@ -67,7 +75,7 @@ class DetailPage extends React.Component<DetailProps, any> {
       return <NotFound />;
     }
     return (
-      <div className={styles.wrapper}>
+      <article className={styles.wrapper}>
         {this.renderHead()}
         <h1 className={styles.title}>{detail.title}</h1>
         <ul className={styles.meta}>
@@ -92,10 +100,11 @@ class DetailPage extends React.Component<DetailProps, any> {
             </Breadcrumb>
           </li>
         </ul>
-        <article
-          ref={(instance) => this.htmlContainer = instance}
+        <RichTextContainer
+          ref={(instance: any) => this.htmlContainer = instance}
+          itemType="articleBody"
           className={cx('markdown-body', styles.article)}
-          dangerouslySetInnerHTML={{ __html: detail.content }}
+          html={detail.content}
         />
         <div className={styles.license}>
           <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
@@ -111,7 +120,7 @@ class DetailPage extends React.Component<DetailProps, any> {
           pic={detail.backgroundImage ? resolveImage(detail.backgroundImage) : undefined}
           url={`${BASE_URL}/p/${detail.id}`}
         />
-      </div>
+      </article>
     );
   }
 }

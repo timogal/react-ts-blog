@@ -103,6 +103,40 @@ declare module 'lodash/isEmpty' {
   export = isEmpty;
 }
 
+declare module 'html2json' {
+  export interface TextNode {
+    node: 'text'
+    text: string
+  }
+
+  export interface ElementNode {
+    node: 'element'
+    tag: string
+    attr?: { [K: string]: string }
+    child?: (ElementNode | TextNode)[]
+  }
+
+  export type HTMLNode = TextNode | ElementNode;
+
+  export interface RootNode {
+    node: 'root'
+    child: HTMLNode[]
+  }
+
+  interface Html2jsonStatic {
+    (html: string): RootNode
+  }
+
+  interface Json2htmlStatic {
+    (node: RootNode): string
+  }
+
+  const html2json: Html2jsonStatic;
+  const json2html: Json2htmlStatic;
+
+  export { html2json, json2html }
+}
+
 declare module 'github-markdown-css' {
 }
 

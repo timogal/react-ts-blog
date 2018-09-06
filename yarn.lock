@@ -3520,6 +3520,10 @@ html-webpack-plugin@^3.2.0:
     toposort "^1.0.0"
     util.promisify "1.0.0"
 
+html2json@^1.0.2:
+  version "1.0.2"
+  resolved "http://registry.npm.taobao.org/html2json/download/html2json-1.0.2.tgz#c9d6d202fa65402386c202b345cf51bce80ed1ef"
+
 htmlparser2@~3.3.0:
   version "3.3.0"
   resolved "http://registry.npm.taobao.org/htmlparser2/download/htmlparser2-3.3.0.tgz#cc70d05a59f6542e43f0e685c982e14c924a9efe"

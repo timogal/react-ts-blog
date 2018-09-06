@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { API_BASE, DAILY_SENTENCE_API } from './env';
-import canUseDOM from './canUseDom';
+import { canUseDOM } from './support';
 import { toDateString } from './DateUtils';
 
 interface SentenceCache {
@@ -21,7 +21,7 @@ export async function loadDailySentence() {
     return cached;
   }
   // 判断是否为node环境
-  const api = canUseDOM() ? '/daily-sentence' : DAILY_SENTENCE_API;
+  const api = canUseDOM ? '/daily-sentence' : DAILY_SENTENCE_API;
   try {
     const { data } = await axios.get(api);
     let json;
