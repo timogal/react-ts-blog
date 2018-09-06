@@ -3,6 +3,7 @@
 
 $header-height: 70px;
 $inner-width: 1440px;
+$inner-width-xs: 100%;
 
 $side-width: ($inner-width - $max-content-width) / 2;
 
@@ -67,4 +68,65 @@ $side-width: ($inner-width - $max-content-width) / 2;
       text-decoration: none;
     }
   }
+
+  li.active {
+    color: $heading-color;
+    font-weight: bold;
+  }
+}
+
+.menu-btn {
+  display: none;
+}
+
+@media screen and (max-width: $screen-xs) {
+  .header {
+    .inner {
+      width: $inner-width-xs;
+    }
+  }
+
+  .logo {
+    width: auto;
+  }
+
+  .search, .content {
+    display: none;
+  }
+
+  .menu-wrap {
+    background-color: #fff;
+    height: 100%;
+
+    .menu li {
+      display: block;
+    }
+  }
+
+  .menu-btn {
+    display: inline-block;
+    float: right;
+    font-size: 24px;
+    padding: 8px;
+    margin: 15px 0;
+    transition: transform ease .3s;
+  }
+
+  .menu-btn.open {
+    transform: rotate(180deg);
+  }
+
+  .menu {
+    padding-top: $padding-lg;
+
+    li, li a {
+      height: 44px;
+      line-height: 44px;
+    }
+
+    li a {
+      display: block;
+    }
+  }
+
 }

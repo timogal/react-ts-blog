@@ -140,6 +140,37 @@ declare module 'html2json' {
 declare module 'github-markdown-css' {
 }
 
+declare module 'react-motion-drawer' {
+  import * as React from 'react';
+
+  interface DrawerProps {
+    zIndex?: number
+    noTouchOpen?: boolean
+    noTouchClose?: boolean
+    onChange?: (open: boolean) => void
+    drawerStyle?: object
+    className?: any
+    overlayClassName?: any
+    /**
+     * react-motion config
+     */
+    config?: any
+    open?: boolean
+    width?: number | string
+    height?: number | string
+    handleWidth?: number
+    peakingWidth?: number
+    panTolerance?: number
+    right?: boolean
+    overlayColor?: string
+    fadeOut?: boolean
+    offset?: number
+  }
+
+  export default class Drawer extends React.Component<DrawerProps> {
+  }
+}
+
 declare module '*.png' {
   const pngPath: string;
 

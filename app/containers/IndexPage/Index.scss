@@ -2,6 +2,10 @@
 
 .root {
   padding-top: 30px;
+
+  @media screen and (max-width: $screen-xs) {
+    padding-top: 0;
+  }
 }
 
 .friend-links {
@@ -42,6 +46,10 @@
 
 .pagination {
   text-align: right;
+
+  @media screen and (max-width: $screen-xs) {
+    margin-right: $padding-xs;
+  }
 }
 
 .loading-wrap {

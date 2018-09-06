@@ -66,10 +66,12 @@ class IndexPage extends React.Component<IndexPageProps, any> {
 
   render() {
     const { items, totalPages, page, total } = this.props;
+    const contentCol = { xs: 24, sm: 24, md: 16, lg: 16 };
+    const toolCol = { xs: 0, sm: 0, md: 8, lg: 8 };
     return (
       <Main className={styles.root}>
-        <Row gutter={24}>
-          <Col span={16}>
+        <Row gutter={{ xs: 0, sm: 0, md: 24, lg: 24 }}>
+          <Col {...contentCol}>
             {
               items.map(({ id, backgroundImage, remark, lastModified, ...rest }) => (
                 <div className={styles.postItem} key={id}>
@@ -95,7 +97,7 @@ class IndexPage extends React.Component<IndexPageProps, any> {
               )
             }
           </Col>
-          <Col span={8}>
+          <Col {...toolCol}>
             <DailySentence />
             <TimelineCard />
             <FriendLinks />

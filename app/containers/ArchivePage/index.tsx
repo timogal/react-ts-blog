@@ -101,7 +101,7 @@ class ArchivePage extends React.Component<Props> {
                 {
                   items.map(item => (
                     <Item color="#999" key={`post-${item.id}`}>
-                      <Link to={`/p/${item.id}`}>{item.title}</Link>
+                      <a href={`/p/${item.id}`}>{item.title}</a>
                     </Item>
                   ))
                 }

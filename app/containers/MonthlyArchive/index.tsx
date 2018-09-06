@@ -53,7 +53,7 @@ class MonthlyArchive extends React.Component<MonthlyArchiveProps, MonthlyArchive
           loading && <Loading />
         }
         {
-          !loading && items.length && items.map(({ id, backgroundImage, remark, lastModified, ...rest }: any) => (
+          !loading && items.length > 0 && items.map(({ id, backgroundImage, remark, lastModified, ...rest }: any) => (
             <div key={id} className={styles.item}>
               <ArticleItem
                 pid={id}

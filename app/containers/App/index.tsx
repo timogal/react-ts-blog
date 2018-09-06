@@ -11,6 +11,7 @@ import TagCloud from 'containers/TagCloud';
 import CategoryPage from 'containers/CategoryPage';
 import NotFound from 'containers/NotFound';
 
+import ScrollTop from './ScrollTop';
 import ssrRoutes from '../../ssrRoutes';
 
 import * as styles from './app.scss';
@@ -20,6 +21,7 @@ export default function App() {
     <div className={styles.container}>
       <Helmet titleTemplate="%s - 心有猛虎,细嗅蔷薇" defaultTitle="心有猛虎,细嗅蔷薇" />
       <Header />
+      <ScrollTop />
       <main className={styles.main}>
         <Switch>
           {

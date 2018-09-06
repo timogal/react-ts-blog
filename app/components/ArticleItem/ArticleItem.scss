@@ -91,3 +91,29 @@
     }
   }
 }
+
+@media screen and (max-width: $screen-xs) {
+  .with-image {
+    .background {
+      width: 0;
+    }
+
+    .wrap {
+      margin-left: 0;
+      padding-left: $padding-xs;
+      overflow: hidden;
+    }
+  }
+
+  .meta {
+    .tags {
+      max-width: 45%;
+      display: inline-block;
+      @include text-ellipsis();
+    }
+
+    > span {
+      vertical-align: middle;
+    }
+  }
+}
