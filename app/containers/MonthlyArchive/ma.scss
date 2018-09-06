@@ -17,6 +17,10 @@ $content-width: 720px;
 .content {
   max-width: $content-width;
   margin-top: 36px;
+
+  @media screen and (max-width: $screen-xs) {
+    padding: 0 12px;
+  }
 }
 
 .item {

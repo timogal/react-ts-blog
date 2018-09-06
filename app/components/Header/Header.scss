@@ -68,6 +68,11 @@ $side-width: ($inner-width - $max-content-width) / 2;
       text-decoration: none;
     }
   }
+
+  li.active {
+    color: $heading-color;
+    font-weight: bold;
+  }
 }
 
 .menu-btn {
@@ -110,4 +115,18 @@ $side-width: ($inner-width - $max-content-width) / 2;
   .menu-btn.open {
     transform: rotate(180deg);
   }
+
+  .menu {
+    padding-top: $padding-lg;
+
+    li, li a {
+      height: 44px;
+      line-height: 44px;
+    }
+
+    li a {
+      display: block;
+    }
+  }
+
 }

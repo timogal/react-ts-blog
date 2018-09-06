@@ -32,6 +32,30 @@ interface HeaderState {
   keyword: string
 }
 
+interface MenuItem {
+  path: string
+  text: string
+}
+
+const menus: MenuItem[] = [
+  {
+    path: '/',
+    text: '首页',
+  },
+  {
+    path: '/archives',
+    text: '归档',
+  },
+  {
+    path: '/categories',
+    text: '分类',
+  },
+  {
+    path: '/tags',
+    text: '标签',
+  },
+];
+
 class Header extends React.Component<HeaderProps, HeaderState> {
   constructor(props: HeaderProps) {
     super(props);
@@ -48,13 +72,16 @@ class Header extends React.Component<HeaderProps, HeaderState> {
 
   render() {
     const { keyword } = this.state;
-    const { menuOpen, openMenu } = this.props;
+    const { menuOpen, openMenu, location } = this.props;
     const menu = (
       <ul className={styles.menu}>
-        <li><Link to="/">首页</Link></li>
-        <li><Link to="/archives">归档</Link></li>
-        <li><Link to="/categories">分类</Link></li>
-        <li><Link to="/tags">标签</Link></li>
+        {
+          menus.map(({ path, text }) => (
+            <li key={path} className={path === location.pathname ? styles.active : undefined}>
+              <Link to={path}>{text}</Link>
+            </li>
+          ))
+        }
       </ul>
     );
     return (
