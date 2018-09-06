@@ -28,7 +28,7 @@ class MonthlyArchive extends React.Component<MonthlyArchiveProps, MonthlyArchive
     const { match } = this.props;
     const { date } = match.params;
     try {
-      const { data } = await Api.get('/articles/monthly', { params: { date } });
+      const { data } = await Api.get('/articles/monthly', { params: { month: date } });
       this.setState({ items: data, loading: false });
     } catch (e) {
       this.setState({ loading: false });

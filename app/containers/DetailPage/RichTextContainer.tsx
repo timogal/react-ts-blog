@@ -41,6 +41,8 @@ class RichTextContainer extends React.Component<Props> {
       return;
     }
     this.scrollEventBind = true;
+    // 加载当前视窗的图片
+    this.onScroll();
     document.addEventListener('scroll', this.onScroll);
   }
 
