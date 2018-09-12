@@ -39,3 +39,13 @@ pm2 start process.json
 
 或参考：[https://github.com/lmk123/blog/issues/28](https://github.com/lmk123/blog/issues/28)
 
+#### html2json的修改
+
+修改**node_modules/html2json/src/html2json.js**的115行为：
+
+```javascript
+var parent = bufArray[0] || results;
+```
+
+参考：[https://github.com/Jxck/html2json/pull/30](https://github.com/Jxck/html2json/pull/30)
+

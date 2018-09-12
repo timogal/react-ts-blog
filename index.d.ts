@@ -103,6 +103,25 @@ declare module 'lodash/isEmpty' {
   export = isEmpty;
 }
 
+declare module 'lodash/throttle' {
+  interface ThrottleOption {
+    leading?: boolean
+    trailing?: boolean
+  }
+
+  interface LodashThrottleStatic {
+    (
+      func: (...args: any[]) => any,
+      wait?: number,
+      options?: ThrottleOption
+    ): (...args: any[]) => any
+  }
+
+  const throttle: LodashThrottleStatic;
+
+  export = throttle;
+}
+
 declare module 'html2json' {
   export interface TextNode {
     node: 'text'

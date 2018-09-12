@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import { html2json, json2html, RootNode, HTMLNode } from 'html2json';
 
+import * as throttle from 'lodash/throttle';
+
 import { IMAGE_BASE, IMAGE_OPTIMIZE_WEBP, IMAGE_OPTIMIZE } from 'utils/env';
 import { webpSupported } from 'utils/support';
 
@@ -43,7 +45,8 @@ class RichTextContainer extends React.Component<Props> {
     this.scrollEventBind = true;
     // 加载当前视窗的图片
     this.onScroll();
-    document.addEventListener('scroll', this.onScroll);
+    // 节流
+    document.addEventListener('scroll', throttle(this.onScroll, 200));
   }
 
   componentWillUnmount() {
@@ -54,12 +57,16 @@ class RichTextContainer extends React.Component<Props> {
 
   private beforeLazyLoad(): string {
     const { html } = this.props;
-    const node: RootNode = html2json(html);
-    const child = node.child;
-    child.forEach(item => {
-      processImage(item);
-    });
-    return json2html(node);
+    try {
+      const node: RootNode = html2json(html);
+      const child = node.child;
+      child.forEach(item => {
+        processImage(item);
+      });
+      return json2html(node);
+    } catch (e) {
+      return html;
+    }
   }
 
   scrollEventBind: boolean = false;
