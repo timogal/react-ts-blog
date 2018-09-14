@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { match } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import Main from 'components/Main';
 import Loading from 'components/Loading';
@@ -45,6 +46,7 @@ class MonthlyArchive extends React.Component<MonthlyArchiveProps, MonthlyArchive
     const { items, loading } = this.state;
     return (
       <Main className={styles.content}>
+        <Helmet title={`归档：${match.params.date}`} />
         <h2 className={styles.title}>
           归档：{match.params.date}
           <small>(共{items.length}篇)</small>

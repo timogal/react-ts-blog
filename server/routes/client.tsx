@@ -70,10 +70,9 @@ async function clientRoute(
 
   response.render('index', {
     content: html,
-    title: helmet.title ? helmet.title.toString() : '<title>心有猛虎，细嗅蔷薇</title>',
-    meta: helmet.meta.toString(),
     state: JSON.stringify(store.getState().toJS()),
     prefetch: IMAGE_BASE,
+    helmet,
   });
 }
 

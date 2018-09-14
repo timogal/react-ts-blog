@@ -61,10 +61,16 @@ class DetailPage extends React.Component<DetailProps, any> {
       keywords = tags.map((item: any) => item.name).join(',');
     }
     return (
-      <Helmet>
+      <Helmet
+        bodyAttributes={{
+          itemscope: "",
+          itemtype: "http://schema.org/WebPage",
+          lang: "zh-Hans"
+        }}
+      >
         <title>{detail.title}</title>
         <meta name="description" content={detail.remark} />
-        {keywords && <meta name="keywords" content={keywords} />}
+        {keywords && <meta itemProp="keywords" name="keywords" content={keywords} />}
       </Helmet>
     );
   }
@@ -74,14 +80,20 @@ class DetailPage extends React.Component<DetailProps, any> {
     if (!detail) {
       return <NotFound />;
     }
+    const date = toDateString(detail.gmtCreated);
     return (
-      <article className={styles.wrapper}>
+      <article className={styles.wrapper} itemScope itemType="http://schema.org/Article">
         {this.renderHead()}
-        <h1 className={styles.title}>{detail.title}</h1>
+        <span aria-hidden itemProp="author" itemScope itemType="http://schema.org/Person">
+          <meta itemProp="name" content="timogal" />
+          <meta itemProp="image" content="https://avatars0.githubusercontent.com/u/17402530?s=460&v=4" />
+        </span>
+        <h1 className={styles.title} itemProp="name headline">{detail.title}</h1>
         <ul className={styles.meta}>
           <li>
             <Icon type="calendar" className={styles.icon} />
-            发布于：{toDateString(detail.gmtCreated)}
+            发布于：
+            <time itemProp="dateCreated" dateTime={date}>{date}</time>
           </li>
           <li>
             <Icon type="eye" className={styles.icon} /> {detail.views}次查看
@@ -93,7 +105,9 @@ class DetailPage extends React.Component<DetailProps, any> {
               {
                 detail.categories.map((item: any) => (
                   <BreadItem key={item.id}>
-                    <Link to={`/search?category=${item.id}`}>{item.name}</Link>
+                    <Link itemProp="url" rel="index" to={`/search?category=${item.id}`}>
+                      <span itemProp="name">{item.name}</span>
+                    </Link>
                   </BreadItem>
                 ))
               }
@@ -106,12 +120,16 @@ class DetailPage extends React.Component<DetailProps, any> {
           className={cx('markdown-body', styles.article)}
           html={detail.content}
         />
-        <div className={styles.license}>
-          <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+        <div className={styles.license} itemProp="license">
+          <a itemProp="license" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
             <img alt="知识共享许可协议" src="https://licensebuttons.net/l/by-nc/4.0/88x31.png" />
           </a>
           <br />
-          本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可。
+          本作品采用
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+            知识共享署名-非商业性使用 4.0 国际许可协议
+          </a>
+          进行许可。
         </div>
         <Share
           className={styles.share}

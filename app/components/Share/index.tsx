@@ -102,6 +102,7 @@ class Share extends React.Component<ShareProps> {
     return (
       <div {...restProps}>
         <Helmet>
+          {url && <link itemProp="mainEntityOfPage" href={url} />}
           <meta name="og:type" content="article" />
           {
             Object.keys(meta).map((key) => {

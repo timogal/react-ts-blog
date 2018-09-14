@@ -4,6 +4,7 @@ import { createStructuredSelector } from "reselect";
 import { connect } from "react-redux";
 import { compose, Dispatch } from "redux";
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import injectSaga from "utils/injectSaga";
 import { format } from 'utils/DateUtils';
@@ -87,29 +88,32 @@ class ArchivePage extends React.Component<Props> {
   renderTimeline() {
     const group = this.getGroup();
     return (
-      <Timeline className={styles.timeline}>
-        {
-          Object.keys(group).map(date => {
-            const items = group[date];
-            return (
-              <Fragment key={date}>
-                <Item key={`date-${date}`} className={styles.timeTag} color="#666">
-                  <h1 className={styles.time}>
-                    <Link to={`/archives/${date}`}>{date}</Link>
-                  </h1>
-                </Item>
-                {
-                  items.map(item => (
-                    <Item color="#999" key={`post-${item.id}`}>
-                      <a href={`/p/${item.id}`}>{item.title}</a>
-                    </Item>
-                  ))
-                }
-              </Fragment>
-            );
-          })
-        }
-      </Timeline>
+      <div>
+        <Helmet title="归档" />
+        <Timeline className={styles.timeline}>
+          {
+            Object.keys(group).map(date => {
+              const items = group[date];
+              return (
+                <Fragment key={date}>
+                  <Item key={`date-${date}`} className={styles.timeTag} color="#666">
+                    <h1 className={styles.time}>
+                      <Link to={`/archives/${date}`}>{date}</Link>
+                    </h1>
+                  </Item>
+                  {
+                    items.map(item => (
+                      <Item color="#999" key={`post-${item.id}`}>
+                        <a href={`/p/${item.id}`}>{item.title}</a>
+                      </Item>
+                    ))
+                  }
+                </Fragment>
+              );
+            })
+          }
+        </Timeline>
+      </div>
     );
   }
 

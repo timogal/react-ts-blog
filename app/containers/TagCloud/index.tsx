@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import Api from 'utils/Api';
 import Loading from "components/Loading";
@@ -64,6 +65,7 @@ class TagCloud extends React.Component<Props, TagCloudState> {
     const { loading, tags } = this.state;
     return (
       <Main withTopMargin>
+        <Helmet title="标签" />
         <h1 className={styles.title}>标签</h1>
         <div className={styles.total}>目前共{tags.length}个标签</div>
         {loading && <Loading />}

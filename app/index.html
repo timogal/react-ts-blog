@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <%- title %>
+    <%- helmet.title.toString() %>
     <link rel="icon shortcut" href="/favicon.ico">
     <link rel="bookmark" href="/favicon.ico">
     <% if (prefetch) { %>
@@ -14,11 +14,9 @@
     <meta name="baidu-site-verification" content="igaKoLEeLg" />
     <!-- GOOGLE -->
     <meta name="google-site-verification" content="MBzgjgnmjPWhy6u8v0Tx8XoliKFCSe1Oz21lYOP6Lrk" />
-    <% if (meta) { %>
-    <%- meta %>
-    <% } %>
+    <%- helmet.meta.toString() %>
 </head>
-<body>
+<body <%- helmet.bodyAttributes.toString() %>>
 <div id="root"><%- content %></div>
 <script id="bootstrap">
   window.__INITIAL_STATE__ = <%- state -%>;
