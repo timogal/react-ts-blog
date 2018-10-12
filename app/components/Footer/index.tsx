@@ -10,7 +10,9 @@ class Footer extends React.Component<any, any> {
       <footer className={styles.footer}>
         <Main className={styles.content}>
           <ul className={styles.info}>
-            <li>粤ICP备18043338号-1</li>
+            <li>
+              <a href="http://www.miitbeian.gov.cn">粤ICP备18043338号-1</a>
+            </li>
             <li>Copyright &copy;  2016-2018 Timogal</li>
             <li><a target="_blank" href="https://github.com/timogal/react-ts-blog">网站源码</a></li>
             <li><a href="http://www.cnzz.com/stat/website.php?web_id=1274226487" target="_blank" title="站长统计">站长统计</a>

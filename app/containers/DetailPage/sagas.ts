@@ -1,5 +1,6 @@
 import { call, put } from 'redux-saga/effects';
 import Api from "utils/Api";
+import { isProd } from "utils/env";
 
 import { detailLoaded } from './actions';
 
@@ -8,8 +9,8 @@ export default function* rootSaga(id: string) {
     const { data } = yield call(
       Api.get,
       `/articles/${id}`,
-      { params: { updateViews: true } }
-      );
+      { params: { updateViews: isProd } }
+    );
     yield put(detailLoaded(data));
   } catch (e) {
   }
